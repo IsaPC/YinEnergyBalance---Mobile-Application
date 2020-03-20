@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // imported screens
 import Home from "../screens/home";
+import PlanSelection from "../screens/planselection";
+
 // import <NameofModule> from "Location";
 
 // types of stacks apart from Main Stack
@@ -15,6 +17,7 @@ function MainStackNavigator() {
         <NavigationContainer>
         {/* the main home screen will be displayed first */}
             <Stack.Navigator>
+                <Stack.Screen name='PlanSelection' component={PlanSelection}  />
                 <Stack.Screen name='Home' component={Home}  />
             </Stack.Navigator> 
         </NavigationContainer>
