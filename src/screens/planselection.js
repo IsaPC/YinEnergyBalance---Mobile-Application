@@ -20,10 +20,14 @@ function PlanMaker() {
     
           <FlatList 
             numColumns={1}
-            keyExtractor={(item) => item.id} 
+            keyExtractor={(item) => item.id}
+            ItemSeparatorComponent = {this.FlatListItemSeparator}
             data={plans} 
             renderItem={({ item }) => ( 
-              <Text style={styles.item}>{item.title}</Text>
+                <View style={styles.plan}>
+                    <Text style={styles.font}>{item.image}</Text>
+                    <Text style={styles.font}>{item.title}</Text>
+                </View>
             )}
           />
     
@@ -38,14 +42,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: '#fff',
       },
-      item: {
+      plan: {
         flex: 1,
         marginHorizontal: 10,
         marginTop: 10,
         padding: 30,
-        backgroundColor: 'white',
-        fontSize: 24,
+        backgroundColor: 'grey',
       },
+      font: {
+        fontSize: 24,
+      }
 });
 
 export default PlanMaker;
