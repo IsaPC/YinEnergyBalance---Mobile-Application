@@ -9,6 +9,7 @@ import Home from "../screens/home";
 //plans
 import PlanSelection from "../screens/planselection";
 import ViewPlan from "../screens/viewplan";
+import CreatePlan from "../screens/createplan";
 
 // import <NameofModule> from "Location";
 
@@ -20,6 +21,7 @@ function MainStackNavigator() {
         <NavigationContainer>
         {/* the main home screen will be displayed first */}
             <Stack.Navigator>
+                <Stack.Screen name='CreatePlan' component={CreatePlan}  />
                 <Stack.Screen name='ViewPlan' component={ViewPlan}  />
                 <Stack.Screen name='PlanSelection' component={PlanSelection}  />
                 <Stack.Screen name='Home' component={Home}  />

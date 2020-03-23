@@ -1,19 +1,39 @@
-import React from 'react'
-import { StyleSheet, View, Text,  Image } from 'react-native'
+/*
+I want to make a "createplan screen"
+*/
 
-function ViewPlan() {
+import React from 'react'
+import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+
+function CreatePlan() {
   return ( // load the JSX
     <View style={styles.container}>
-        <View style={styles.containImage}>
-            <Image source={require("../../assets/TempImage.jpg")} style={styles.styledImage} />
+
+        {/* the top of the mobile application */}
+        <View style={styles.top}>
+            <View style={styles.containImage}>
+                <Image source={require("../../assets/TempImage.jpg")} style={styles.styledImage} />
+            </View>
+
+                {/*TODO add option to add image from Gallary */}
+            <View style={styles.containButton}>
+                
+            </View>
         </View>
+
+        {/* contains the title */}
         <View style={styles.containTitle}>
+            {/*TODO change to text input */}
             <Text style={styles.Title}> Title </Text>
         </View>
+
+        {/* contains the contents */}
         <View style={styles.containContent}>
+            {/*TODO change to text input */}
             <Text style={styles.description}> 
             in plan you will jump and run on the spot </Text>
         </View>
+
     </View>
   );
 }
@@ -24,12 +44,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ebebeb'
     },
+
     containImage: {
-        flex: 4,
+       
         backgroundColor: "red", //TODO change colour
         justifyContent: 'center',
         alignItems: 'center',
     },
+    containButton: {
+    
+    },
+
     styledImage: {
         width: 250,
         height: 250,
@@ -63,4 +88,4 @@ const styles = StyleSheet.create({
 })
 
 // export function
-export default ViewPlan;
+export default CreatePlan;
