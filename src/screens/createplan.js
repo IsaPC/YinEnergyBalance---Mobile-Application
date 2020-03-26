@@ -3,36 +3,22 @@ I want to make a "createplan screen"
 */
 
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, Text, StatusBar ,  Image, TouchableWithoutFeedback } from 'react-native'
 
 function CreatePlan() {
   return ( // load the JSX
     <View style={styles.container}>
-
-        {/* the top of the mobile application */}
-        <View style={styles.top}>
-            <View style={styles.containImage}>
-                <Image source={require("../../assets/TempImage.jpg")} style={styles.styledImage} />
+        <View style={styles.containimage}>
+            <View style={styles.box1}>
+                <Text>box1</Text>
             </View>
-
-                {/*TODO add option to add image from Gallary */}
-            <View style={styles.containButton}>
-                
+            <View style={styles.box2}>
+                <Text>box2</Text>
             </View>
         </View>
 
-        {/* contains the title */}
-        <View style={styles.containTitle}>
-            {/*TODO change to text input */}
-            <Text style={styles.Title}> Title </Text>
-        </View>
-
-        {/* contains the contents */}
-        <View style={styles.containContent}>
-            {/*TODO change to text input */}
-            <Text style={styles.description}> 
-            in plan you will jump and run on the spot </Text>
-        </View>
+        <View style={styles.containtitle}></View>
+        <View style={styles.containdesc}></View>
 
     </View>
   );
@@ -42,49 +28,36 @@ function CreatePlan() {
 const styles = StyleSheet.create({
     container: { // TODO use a global setting
         flex: 1,
-        backgroundColor: '#ebebeb'
-    },
+        flexDirection: 'column',
+        backgroundColor: 'white',
 
-    containImage: {
-       
-        backgroundColor: "red", //TODO change colour
-        justifyContent: 'center',
-        alignItems: 'center',
     },
-    containButton: {
-    
+    containimage: {
+        backgroundColor: 'green',
+        padding: 10,
+        flex: 1.5,
+        flexDirection: 'row',
     },
-
-    styledImage: {
-        width: 250,
-        height: 250,
-        borderRadius: 250 / 2,
-        overflow: "hidden",
-        borderWidth: 3,
-        borderColor: "green" //TODO change colour
-        
+    box1: {
+        backgroundColor: 'brown',
+        padding: 10,
+        flex: 2,
     },
-    containTitle: {
+    box2: {
+        backgroundColor: 'gray',
+        padding: 10,
         flex: 1,
-        backgroundColor: "green" //TODO change colour
     },
-    Title: {
-        textAlign: 'center',
-        fontSize: 45,
-        color: '#2A2A2A'
-
+    containtitle: {
+        backgroundColor: 'red',
+        padding: 10,
+        flex: 0.5,
     },
-    containContent: {
-        flex: 3,
-        
-        backgroundColor: "yellow", //TODO change colour
-    },
-    description: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: '#2A2A2A' //TODO change colour
+    containdesc: {
+        backgroundColor: 'blue',
+        padding: 10, 
+        flex: 1,
     }
-
 })
 
 // export function
