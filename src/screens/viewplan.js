@@ -34,10 +34,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 250,
         borderRadius: 250 / 2,
-        overflow: "hidden",
-        borderWidth: 3,
-        borderColor: "green" //TODO change colour
-        
+        overflow: "hidden", 
     },
     containTitle: {
         flex: 1,
