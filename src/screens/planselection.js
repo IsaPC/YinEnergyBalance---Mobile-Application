@@ -1,88 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 
 function PlanMaker() {
-    //state // TEMP DATA
-    const [plans, setPlans] = useState(
-        [
-                {title: 'plan 1', imageurl: '../', id: '1'},
-                {title: 'plan 2', imageurl: '-_-', id: '2'},
-                {title: 'plan 3', imageurl: ':[', id: '3'},
-                {title: 'plan 4', imageurl: ':}', id: '4'},
-                {title: 'plan 5', imageurl: ':|', id: '5'},
-                {title: 'plan 6', imageurl: ';)', id: '6'},
-                {title: 'plan 7', imageurl: '*-*', id: '7'}
-        ]);
-    
+    //state //DONE TEMP DATA
+    state = { plans:[
+        {title: 'plan 1', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '1'},
+        {title: 'plan 2', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '2'},
+        {title: 'plan 3', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '3'},
+        {title: 'plan 4', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '4'},
+        {title: 'plan 5', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '5'},
+        {title: 'plan 6', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '6'},
+        {title: 'plan 7', imageurl: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', id: '7'}  
+    ]
+}
+
     {/*functions */}
     addPlan = () => {
         console.log('add button pressed');
     }
 
+    viewPlan = () => {
+        console.log('view plan');
+    }
 
+    editPlan = () => {
+        console.log('open up plan X');
+    }
+
+    //AJX implamentations
+    function ViewPlan () {
+        return (
+            <View style={{
+                flexDirection: 'row',
+                paddingRight: 10,
+                paddingTop: 10
+            }}>
+                {/*Empty space */}
+                <View style={{
+                    flex: 1
+                }}>
+                </View>
+
+                {/*green button */}
+                <TouchableOpacity onPress={addPlan /*button */}>
+                <View style={{
+                    backgroundColor: 'green',
+                    width: 70,
+                    height: 70,
+                    borderRadius: 70 / 2,
+                }}
+                >
+                    <Text style={{
+                        textAlign: 'center',
+                        color: 'white',
+                        fontSize: 50,
+                    }}
+                    >
+                    +</Text>
+                </View> 
+                </TouchableOpacity>
+
+            </View>
+
+        );
+    }
+
+
+    //a function to contain AJX for the list of plans
+    function LessonPlan ({ item }) {
+        return (
+            <View style={styles.containplan}>
+            {/*TODO add source */}
+            
+            {/*View Plan */}
+            <TouchableOpacity onPress={viewPlan /*button */} style={{flex: 2, flexDirection: 'row'}}>
+                <Image source={{uri:item.imageurl}} style={{width:60, height:60,borderRadius:30}} />
+                <View style={{alignItems:"center",flex:1}}>
+                <Text style={{fontWeight:"bold", fontSize: 16}}>{item.title}</Text>
+                </View>
+            </TouchableOpacity>
+
+            {/*edit Plan */}
+            <TouchableOpacity onPress={editPlan /*button */} 
+                style={{height:50,width:50, justifyContent:"center",alignItems:"center"
+                }}>
+                
+
+              <Text style={{color:"blue"}}>Edit</Text>
+            </TouchableOpacity>
+          </View>
+        );
+    }
+      
 
     //AJX code
     return (
         <View style={styles.container}>
-    
-        {/* add a plan */}
-        <View style={styles.containaddplan}>
-        <TouchableOpacity onPress={addPlan}>
-            <View style = {styles.button}>
-            </View>
-        </TouchableOpacity>
-        </View>
+        {/*button to create plan */}
+        <ViewPlan />
 
-            {/* show the list of plans */}
-            <FlatList 
-                numColumns={1}
-                keyExtractor={(item) => item.id}
-                ItemSeparatorComponent = {this.FlatListItemSeparator}
-                data={plans} 
-                renderItem={({ item }) => ( 
-                    <View style={styles.containplan}>
-                        <Image source={require("../../assets/TempImage.jpg")} style={styles.image}></Image>
-                        <Text style={styles.font}>{item.title}</Text>
-                    </View>
-                )}
-            />
-    
-        </View>
-      );
+        {/*List of plans */}
+        <FlatList
+          style={{flex:1}}
+          data={this.state.plans}
+          renderItem={({ item }) => <LessonPlan item={item}/>}
+          keyExtractor={item => item.id}
+        />
+      </View>
+    );
 }
 
+{/* Styling */}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
-        paddingHorizontal: 20,
-      },
-      button: {
-        backgroundColor: 'green',
-        width: 100,
-        height: 100,
-        borderRadius: 100 / 2,
-        justifyContent: 'flex-end'
       },
       containplan: {
-        flex: 1,
-        flexDirection: 'row',
-        paddingTop: 30,
-        backgroundColor: 'grey'
-      },
-
-      font: {
-        padding: 20,
-        fontSize: 24,
-        flex: 1,
-        backgroundColor: 'blue'
-      },
-      image: {
-        width: 80,
-        height: 80,
-        borderRadius: 80 / 2,
-        backgroundColor: 'yellow'
+        margin:10,
+        padding:10,
+        backgroundColor:"#FFF",
+        width:"80%",
+        flex:1,
+        alignSelf:"center",
+        flexDirection:"row",
+        borderRadius:5
       }
+      
 });
 
 export default PlanMaker;
