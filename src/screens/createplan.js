@@ -1,7 +1,3 @@
-/*
-I want to make a "createplan screen"
-*/
-
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, StatusBar ,  Image, TextInput } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';

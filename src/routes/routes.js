@@ -21,9 +21,10 @@ function MainStackNavigator() {
         <NavigationContainer>
         {/* the main home screen will be displayed first */}
             <Stack.Navigator>
+               
+                <Stack.Screen name='ViewPlan' component={ViewPlan}  />
                 <Stack.Screen name='CreatePlan' component={CreatePlan}  />
                 <Stack.Screen name='PlanSelection' component={PlanSelection}  />
-                <Stack.Screen name='ViewPlan' component={ViewPlan}  />
                 <Stack.Screen name='Home' component={Home}  />
             </Stack.Navigator> 
         </NavigationContainer>
