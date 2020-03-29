@@ -1,6 +1,10 @@
 import React, { useState, Component } from 'react';
 import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 
+{/* navigation */}
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 function PlanMaker() {
     //state //DONE TEMP DATA
     state = { plans:[
@@ -17,6 +21,7 @@ function PlanMaker() {
     {/*functions */}
     addPlan = () => {
         console.log('add button pressed');
+        
     }
 
     viewPlan = () => {
