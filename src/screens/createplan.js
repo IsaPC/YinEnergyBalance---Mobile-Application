@@ -5,7 +5,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 function CreatePlan() {
     {/* State */}
     const [title, setTitle] = useState('');
-    const
+
+    //array to save plan infomation
+    const [plans, setPlans] = useState([]);
 
     addImage = () => {
         console.log('add image');

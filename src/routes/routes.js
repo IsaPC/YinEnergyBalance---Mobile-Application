@@ -1,4 +1,4 @@
-//import required modules
+
 import * as React from 'react';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,9 +22,10 @@ function MainStackNavigator() {
         {/* the main home screen will be displayed first */}
             <Stack.Navigator>
                
-                <Stack.Screen name='ViewPlan' component={ViewPlan}  />
-                <Stack.Screen name='CreatePlan' component={CreatePlan}  />
                 <Stack.Screen name='PlanSelection' component={PlanSelection}  />
+                <Stack.Screen name='CreatePlan' component={CreatePlan}  />
+                <Stack.Screen name='ViewPlan' component={ViewPlan}  />
+
                 <Stack.Screen name='Home' component={Home}  />
             </Stack.Navigator> 
         </NavigationContainer>
