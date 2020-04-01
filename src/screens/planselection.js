@@ -7,7 +7,7 @@ import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from 'react
 
 function PlanMaker() {
     //state //DONE TEMP DATA
-    state = { plans:[
+    const [plans, setPlans] = useState([
         {title: 'plan 1', id: '1'},
         {title: 'plan 2', id: '2'},
         {title: 'plan 3', id: '3'},
@@ -20,21 +20,13 @@ function PlanMaker() {
         {title: 'plan 11', id: '10'},
         {title: 'plan 12', id: '11'},
         {title: 'plan 13', id: '12'},
-    ]
-}
+    ])
 
     {/*functions */}
     addPlan = () => {
         console.log('add button pressed');
     }
 
-    viewPlan = () => {
-        console.log('view plan');
-    }
-
-    editPlan = () => {
-        console.log('open up plan X');
-    }
 
     //AJX implamentations
     const AddPlanHandler = () => {
@@ -48,29 +40,7 @@ function PlanMaker() {
                 </TouchableOpacity>
             </View>
         );
-    }
-
-
-    //a function to contain AJX for the list of plans
-    function LessonPlan ({ item }) {
-        return (
-            <View style={styles.iteminlist}>
-                {/*View Plan */}
-                <TouchableOpacity onPress={viewPlan /*button */}>
-                    {/* TODO Image */}
-                    <View>
-                        <Text >{item.title}</Text>
-                    </View>
-                </TouchableOpacity>
-
-                {/*edit Plan */}
-                <TouchableOpacity onPress={editPlan /*button */}>
-                <Text style={{color:"blue"}}>Edit</Text>
-                </TouchableOpacity>
-          </View>
-        );
-    }
-      
+    } 
 
     //AJX code
     return (
@@ -78,13 +48,17 @@ function PlanMaker() {
         {/*button to create plan */}
         <AddPlanHandler />
 
-        {/*List of plans */}
-        <FlatList
-          style={{flex:1}}
-          data={this.state.plans}
-          renderItem={({ item }) => <LessonPlan item={item}/>}
-          keyExtractor={item => item.id}
-        />
+
+        <View>
+			<FlatList 
+			data={plans}
+			renderItem={itemData => 
+				<View>
+					<Text>{itemData.item.title}</Text>
+				</View>
+			} 
+			/>
+		</View>
       </View>
     );
 }
