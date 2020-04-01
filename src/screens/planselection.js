@@ -42,6 +42,15 @@ function PlanMaker() {
         );
     } 
 
+    function Item({ item }) {
+        return (
+          <View>
+            <Text>{item.id}</Text>
+            <Text >{item.title}</Text>
+          </View>
+        );
+      }
+
     //AJX code
     return (
         <View style={styles.container}>
@@ -50,14 +59,11 @@ function PlanMaker() {
 
 
         <View>
-			<FlatList 
-			data={plans}
-			renderItem={itemData => 
-				<View>
-					<Text>{itemData.item.title}</Text>
-				</View>
-			} 
-			/>
+        <FlatList
+        data={plans}
+        renderItem={({ item }) => <Item item={item} />}
+        keyExtractor={item => item.id}
+      />
 		</View>
       </View>
     );
