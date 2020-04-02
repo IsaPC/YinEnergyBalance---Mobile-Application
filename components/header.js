@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     header: {
       height: 80,
       backgroundColor: 'lightgreen',
-      flex: 0.11,
+      flex: 0.11, //for android = 0.14
       
     },
     title: {
