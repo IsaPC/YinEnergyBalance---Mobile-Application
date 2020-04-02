@@ -44,9 +44,9 @@ function PlanMaker() {
 
     function Item({ item }) {
         return (
-          <View>
-            <Text>{item.id}</Text>
-            <Text >{item.title}</Text>
+          <View style={styles.iteminlist}>
+            <Text>{item.id}: </Text>
+            <Text >{item.title} </Text>
           </View>
         );
       }
@@ -91,10 +91,16 @@ const styles = StyleSheet.create({
     },
     /// Lesson Plans
         iteminlist: {
+            flexDirection: 'row',
             padding: 10,
-            marginVertical: 10, /*add spacing between items */
-            borderBottomColor: 'black',
+
+            // add a line under each item
+            borderBottomColor: 'grey',
             borderBottomWidth: 1,
+
+            marginVertical: 10, /*add spacing between items */            
+
+
         }
       
 });
