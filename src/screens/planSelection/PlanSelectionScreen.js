@@ -8,17 +8,19 @@ import LessionPlanItem from './LessionPlanItem';
 const Stack = createStackNavigator();
 
 // navigation
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 // screens to navigate
 import CreatePlan from '../createPlan/CreatePlanScreen';
-const PlanSelectionScreen = (props, {navigation}) => {
+const PlanSelectionScreen = (props) => {
+    const navigation = useNavigation();
+
+
 
     //TODO
     const addScreenHandler = () => {
         console.log('open new screen');
-        console.log(navigation)
         navigation.navigate('AddPlan');
     }
 
