@@ -1,10 +1,10 @@
 import React from 'react';
+import Routes from './src/routes/Routes';
 
-import MainStackNavigator from './src/routes/routes';
 
 function App() {
   return (
-    <MainStackNavigator />
+    <Routes />
   );
 }
 
