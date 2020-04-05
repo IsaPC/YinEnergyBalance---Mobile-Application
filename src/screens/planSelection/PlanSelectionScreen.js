@@ -13,7 +13,12 @@ import { useNavigation } from '@react-navigation/native';
 
 // screens to navigate
 import CreatePlan from '../createPlan/CreatePlanScreen';
-const PlanSelectionScreen = (props) => {
+
+
+const PlanSelectionScreen = props => {
+// log props
+    console.log(props);
+
     const navigation = useNavigation();
 
 
@@ -24,44 +29,34 @@ const PlanSelectionScreen = (props) => {
         navigation.navigate('AddPlan');
     }
 
-    const Screen = (props) => {
-        return (
-         //remove keyboard if user touches empty space
-         <TouchableWithoutFeedback
-         onPress={() => {
-             Keyboard.dismiss();
-         }}
-         >
-             <View>
-                 {/* ADD Button */}
-                 <AddButton onPress ={addScreenHandler} style={styles.button}/>
- 
-                    
-                    
-                     {/* divider */}
-                     <View style={{
-                         borderBottomColor: 'black',
-                         borderBottomWidth: 1,
-                         padding: 2,
-                     }}>
-                     </View>
- 
-                 {/* list of plans */}
-                     <LessionPlanItem />
-             </View>
-         </TouchableWithoutFeedback>
-         );
-    } 
+
 
 
     //JSX
     return (
-        <Screen />
-        // <Stack.Navigator initialRouteName="LessionPlan">
-        //     <Stack.Screen name="LessionPlan" component={Screen} />
-        //     <Stack.Screen name="AddPlan" component={CreatePlan}/>
-        // </Stack.Navigator>
+        //remove keyboard if user touches empty space
+        <TouchableWithoutFeedback
+        onPress={() => {
+            Keyboard.dismiss();
+        }}
+        >
+            <View>
+                {/* ADD Button */}
+                <AddButton onPress ={addScreenHandler} style={styles.button}/>
 
+                
+                    {/* divider */}
+                    <View style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                        padding: 2,
+                    }}>
+                    </View>
+
+                {/* list of plans */}
+                    <LessionPlanItem />
+            </View>
+        </TouchableWithoutFeedback>
     );
 }; {/* END */}
 

@@ -30,13 +30,21 @@ import React, { useState } from 'react'
 import { StyleSheet, View, Text, StatusBar , Image, TextInput, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+//redux connector
+import { useDispatch } from 'react-redux';
+import * as placesActions from '../../store/plans-actions';
 
+//navigation
+import { useNavigation } from '@react-navigation/native';
 
 const CreatePlanScreen = props => {
+    navigation = useNavigation();
+    const dispatch = useDispatch(); // used to send data to store
+
 
     /// --- TITLE ---
     // control the title input
-    const [title, setTitle] = useState('');
+    const [titleValue, setTitleValue] = useState('');
 
     // set the title
     const titleChangeHandler = titletext => {
@@ -56,16 +64,19 @@ const CreatePlanScreen = props => {
     ///
 
     //array to save plan infomation
-    const [plans, setPlans] = useState([]);
+
 
     const addImage = () => {
         console.log('add image');
     }
 
-    const SavePlan = () => {
-
+    /// ---- SAVE PLAN ----
+    const SavePlanHandler = () => {
+        dispatch(placesActions.addPlan(titleValue));
+        //props.navigation.goBack(); // SHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTtt
+        
     }
-
+    ///
 
 
   return ( // load the JSX
@@ -88,7 +99,7 @@ const CreatePlanScreen = props => {
                 placeholderTextColor='black'
                 style={styles.titleinput}
                 onChangeText={titleChangeHandler} 
-                value={title}
+                value={titleValue}
 
             />
         </View>
@@ -105,10 +116,10 @@ const CreatePlanScreen = props => {
         </View>
 
         <Button
-    onPress={() => {console.log("save")}}
-    title="Save"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
+            onPress={SavePlanHandler}
+            title="Save"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
 />
 
     </View>
