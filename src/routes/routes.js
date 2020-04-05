@@ -7,41 +7,44 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from '../screens/home/IndexScreen';
 import LessionPlanner from '../screens/planSelection/PlanSelectionScreen';
 import CreatePlanScreen from '../screens/createPlan/CreatePlanScreen';
+import ViewPlan from '../screens/viewPlan/viewPlanScreen';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-/// functions call the screens
-function HomeScreen() {
-    return <Home />
-}
+// /// functions call the screens
+// function HomeScreen() {
+//     return <Home />
+// }
 
-function LessionPlannerScreen() {
-    return <LessionPlanner />
-}
+// function LessionPlannerScreen() {
+//     return <LessionPlanner />
+// }
 
 
 // place all screens you wish to have a drawer
-const AllDrawer = () => {
+const AllDrawer = props => {
     return (
         <Drawer.Navigator>
-            <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen name="Lession Plans" component={LessionPlannerScreen} /> 
-            <Drawer.Screen name="AddPlan" component={CreatePlanScreen /* TODO create custom drawer, HIDE ADDPLAN */}/> 
+            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="Lession Plans" component={LessionPlanner} /> 
+            <Drawer.Screen name="AddPlan" component={CreatePlanScreen} /* TODO create custom drawer, HIDE ADDPLAN */    /> 
+            <Stack.Screen name="ViewPlan" component={ViewPlan} /* TODO create custom drawer, HIDE ADDPLAN */ />
         </Drawer.Navigator>
     );
 }
 
 // the last route
-const Routes =() => {
+const Routes = props => {
     return (
         <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={AllDrawer} />
-            <Stack.Screen name="Lession Plans" component={AllDrawer} /> 
-            <Stack.Screen name="AddPlan" component={AllDrawer}/>
-            
-        </Stack.Navigator>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={AllDrawer} />
+                <Stack.Screen name="Lession Plans" component={AllDrawer} /> 
+                <Stack.Screen name="AddPlan" component={AllDrawer} />
+                <Stack.Screen name="ViewPlan" component={AllDrawer} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

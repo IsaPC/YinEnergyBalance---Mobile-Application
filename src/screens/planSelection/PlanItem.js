@@ -3,19 +3,23 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard, TouchableOp
 import { } from 'react-native-gesture-handler';
 
 const PlanItem = props => {
+
+
     return (
-    <View>
-        <TouchableOpacity style={styles.itemContainer}>
-                <Image style={styles.image} source={{uri: props.image}}/>
+    // <View>
+        <TouchableOpacity onPress={props.onSelect} style={styles.itemContainer}>
+                {/* TODO <Image style={styles.image} source={{uri: props.image}}/> */}
                 <Text >{props.title} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.itemContainer}>
+        /* <TouchableOpacity style={styles.itemContainer}>
                 <Text>edit</Text>
         </TouchableOpacity>
-    </View>
+    </View> */
     );
 };
+
+
 
 const styles = StyleSheet.create({
     itemContainer: {

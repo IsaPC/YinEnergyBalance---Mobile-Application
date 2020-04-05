@@ -16,8 +16,9 @@ import CreatePlan from '../createPlan/CreatePlanScreen';
 
 
 const PlanSelectionScreen = props => {
-// log props
-    console.log(props);
+    console.log('opening plan selection screen');
+
+        
 
     const navigation = useNavigation();
 

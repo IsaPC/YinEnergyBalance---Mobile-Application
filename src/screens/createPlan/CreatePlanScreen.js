@@ -1,31 +1,4 @@
-// import React from 'react';
-// import {StyleSheet, View, Text} from 'react-native';
-
-// const CreatePlanScreen = props => {
-
-//     console.log('render home');
-
-//     return (
-//         <View style={styles.screen}>
-//             <Text>Create Plan Screen</Text>
-//         </View>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-//     screen: {
-//         flex: 1,
-//         justifyContent: "center",
-//         alignSelf: 'center'
-//     }
-// });
-
-// export default CreatePlanScreen;
-
-
-///// OLD CODE ///////
-//TODO refactor code
-// Isaac
+// Isaac Ceff
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, StatusBar , Image, TextInput, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -34,11 +7,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import * as placesActions from '../../store/plans-actions';
 
-//navigation
-import { useNavigation } from '@react-navigation/native';
+// import custom components
+import ImagePicker from '../createPlan/imageSelector';
+
 
 const CreatePlanScreen = props => {
-    navigation = useNavigation();
+
     const dispatch = useDispatch(); // used to send data to store
 
 
@@ -49,7 +23,7 @@ const CreatePlanScreen = props => {
     // set the title
     const titleChangeHandler = titletext => {
         //could add title validation
-        setTitle(titletext);
+        setTitleValue(titletext);
     }
     ///
 
@@ -60,6 +34,7 @@ const CreatePlanScreen = props => {
     const descChangeHandler = desctext => {
         //could add title validation
         setDesc(desctext);
+        
     }
     ///
 
@@ -73,25 +48,27 @@ const CreatePlanScreen = props => {
     /// ---- SAVE PLAN ----
     const SavePlanHandler = () => {
         dispatch(placesActions.addPlan(titleValue));
-        //props.navigation.goBack(); // SHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTtt
-        
+        props.navigation.goBack();
     }
     ///
 
 
   return ( // load the JSX
     <View style={styles.container}>
+        <ImagePicker />
+
+        {/* being replaced with ImagePicker 
         <View style={styles.containimage}>
             <View style={styles.box1}>
-            <Image source={require("../../../assets/emptyImage.png")} style={styles.styledimage} />
+                <Image source={require("../../../assets/emptyImage.png")} style={styles.styledimage} />
             </View>
             <View style={styles.box2}>
                 <Text>box2</Text>
-                <TouchableOpacity onPress={addImage /*button */}>
+                <TouchableOpacity onPress={addImage }>
                 <Image source={require("../../../assets/Gallery.png")} style={styles.addphoto} />
                 </TouchableOpacity>
             </View>
-        </View>
+        </View> */}
 
         <View style={styles.containtitle}>
             <TextInput

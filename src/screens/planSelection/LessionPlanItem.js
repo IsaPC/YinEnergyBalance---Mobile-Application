@@ -6,11 +6,17 @@ import PlanItem from './PlanItem';
 
 // react navigation
 import { useSelector } from 'react-redux'; // use to get items
-
+import { useNavigation } from '@react-navigation/native';
 
 
 const LessionPlanItem = props => {
+    const navigation = useNavigation();
+    console.log(navigation);
+
     const plans = useSelector(state => state.plans.plans);
+
+    console.log('load lesson plan item');
+    //console.log("whats in props: " + props.navigation);
 
     // render JSX
     return <FlatList
@@ -19,9 +25,13 @@ const LessionPlanItem = props => {
                 renderItem={itemData => (
                     <PlanItem 
                         title={itemData.item.title} 
-                        image={null} 
+                        //TODO image={null} 
                         onSelect={() => {
-                            props.navigation.navigate() // SHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTtt
+                                console.log('pressed view')
+                                navigation.navigate('ViewPlan', {
+                                planTitle: itemData.item.title,
+                                planId: itemData.item.id
+                                });
                     }} />
                 )}
                 
