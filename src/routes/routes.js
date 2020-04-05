@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 //screen imports
 import Home from '../screens/home/IndexScreen';
 import LessionPlanner from '../screens/planSelection/PlanSelectionScreen';
+import CreatePlanScreen from '../screens/createPlan/CreatePlanScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,7 +37,9 @@ const Routes =() => {
         <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={AllDrawer} />
-            <Drawer.Screen name="Lession Plans" component={LessionPlannerScreen} /> 
+            <Drawer.Screen name="Lession Plans" component={AllDrawer} /> 
+            <Stack.Screen name="AddPlan" component={CreatePlanScreen}/>
+            
         </Stack.Navigator>
         </NavigationContainer>
     );

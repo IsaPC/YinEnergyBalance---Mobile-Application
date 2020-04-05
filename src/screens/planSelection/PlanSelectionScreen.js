@@ -56,16 +56,14 @@ const PlanSelectionScreen = (props) => {
 
     //JSX
     return (
-
-        <Stack.Navigator initialRouteName="LessionPlan">
-            <Stack.Screen name="LessionPlan" component={Screen} />
-            <Stack.Screen name="AddPlan" component={CreatePlan}/>
-        </Stack.Navigator>
+        <Screen />
+        // <Stack.Navigator initialRouteName="LessionPlan">
+        //     <Stack.Screen name="LessionPlan" component={Screen} />
+        //     <Stack.Screen name="AddPlan" component={CreatePlan}/>
+        // </Stack.Navigator>
 
     );
-
-
-};
+}; {/* END */}
 
 
 
