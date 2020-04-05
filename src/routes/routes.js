@@ -27,6 +27,7 @@ const AllDrawer = () => {
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Lession Plans" component={LessionPlannerScreen} /> 
+            <Drawer.Screen name="AddPlan" component={CreatePlanScreen /* TODO create custom drawer, HIDE ADDPLAN */}/> 
         </Drawer.Navigator>
     );
 }
@@ -37,8 +38,8 @@ const Routes =() => {
         <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={AllDrawer} />
-            <Drawer.Screen name="Lession Plans" component={AllDrawer} /> 
-            <Stack.Screen name="AddPlan" component={CreatePlanScreen}/>
+            <Stack.Screen name="Lession Plans" component={AllDrawer} /> 
+            <Stack.Screen name="AddPlan" component={AllDrawer}/>
             
         </Stack.Navigator>
         </NavigationContainer>

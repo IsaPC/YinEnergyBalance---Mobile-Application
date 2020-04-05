@@ -27,34 +27,43 @@
 //TODO refactor code
 // Isaac
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, StatusBar , Image, TextInput } from 'react-native'
+import { StyleSheet, View, Text, StatusBar , Image, TextInput, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function CreatePlanScreen() {
-    {/* State */}
+
+
+const CreatePlanScreen = props => {
+
+    /// --- TITLE ---
+    // control the title input
     const [title, setTitle] = useState('');
+
+    // set the title
+    const titleChangeHandler = titletext => {
+        //could add title validation
+        setTitle(titletext);
+    }
+    ///
+
+    /// --- DESC ---
+    // control description input
+    const [desc, setDesc] = useState('');
+
+    const descChangeHandler = desctext => {
+        //could add title validation
+        setDesc(desctext);
+    }
+    ///
 
     //array to save plan infomation
     const [plans, setPlans] = useState([]);
 
-    addImage = () => {
+    const addImage = () => {
         console.log('add image');
     }
 
+    const SavePlan = () => {
 
-// -------- Attempt to load images --------
-    try { // attempt to find static image
-        tempImage = <Image source={require("../../../assets/emptyImage.png")} style={styles.styledimage} />
-    } catch (error) {
-        tempImage = <Text>can't find empty image</Text>
-        console.log(error);
-    }
-
-    try { // load gallary
-        GallaryImage = <Image source={require("../../../assets/Gallery.png")} style={styles.addphoto} />
-    } catch (error) {
-        GallaryImage = <Text>can't find gallary image</Text>
-        console.log(error);
     }
 
 
@@ -63,12 +72,12 @@ function CreatePlanScreen() {
     <View style={styles.container}>
         <View style={styles.containimage}>
             <View style={styles.box1}>
-                {tempImage /* Attempt to load image */} 
+            <Image source={require("../../../assets/emptyImage.png")} style={styles.styledimage} />
             </View>
             <View style={styles.box2}>
                 <Text>box2</Text>
                 <TouchableOpacity onPress={addImage /*button */}>
-                    {GallaryImage  /* Attempt to load image */}
+                <Image source={require("../../../assets/Gallery.png")} style={styles.addphoto} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -78,8 +87,9 @@ function CreatePlanScreen() {
                 placeholder='Input title'
                 placeholderTextColor='black'
                 style={styles.titleinput}
-                onChangeText={(value) => setTitle(value)} 
-                onPress={console.log('typed in title')}
+                onChangeText={titleChangeHandler} 
+                value={title}
+
             />
         </View>
         <View style={styles.containdesc}>
@@ -89,10 +99,17 @@ function CreatePlanScreen() {
                 multiline
                 placeholderTextColor='black'
                 style={styles.descinput}
-                onChangeText={(value) => setTitle(value)} 
-                onPress={console.log('typed in description')}               
+                onChangeText={descChangeHandler} 
+                value={desc}    
             />
         </View>
+
+        <Button
+    onPress={() => {console.log("save")}}
+    title="Save"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+/>
 
     </View>
   );
@@ -157,6 +174,7 @@ const styles = StyleSheet.create({
             margin: 10,
             backgroundColor: 'rgb(238, 238, 238)',
             borderRadius: 10,
+            height: 50
         },
     containdesc: {
         backgroundColor: 'blue',
@@ -177,7 +195,6 @@ const styles = StyleSheet.create({
             backgroundColor: 'rgb(238, 238, 238)',
             borderWidth: 1,
             borderRadius: 10,
-            
         },
 })
 
