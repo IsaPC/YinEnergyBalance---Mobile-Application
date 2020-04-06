@@ -15,6 +15,14 @@ const CreatePlanScreen = props => {
 
     const dispatch = useDispatch(); // used to send data to store
 
+    /// --- IMAGEHANDLER ---
+    const [selectedimage, setSelectedImage] = useState();
+
+    //save image url
+    const imageTakenHandler = imagePath => {
+        setSelectedImage(imagePath);
+    }
+    ///
 
     /// --- TITLE ---
     // control the title input
@@ -41,13 +49,11 @@ const CreatePlanScreen = props => {
     //array to save plan infomation
 
 
-    const addImage = () => {
-        console.log('add image');
-    }
 
     /// ---- SAVE PLAN ----
     const SavePlanHandler = () => {
-        dispatch(placesActions.addPlan(titleValue));
+        console.log(titleValue, selectedimage);
+        dispatch(placesActions.addPlan(titleValue, selectedimage));
         props.navigation.goBack();
     }
     ///
@@ -55,18 +61,24 @@ const CreatePlanScreen = props => {
 
   return ( // load the JSX
     <View style={styles.container}>
-        <ImagePicker />
+        <ImagePicker onImageTaken={imageTakenHandler} />
 
         {/* being replaced with ImagePicker 
-        <View style={styles.containimage}>
-            <View style={styles.box1}>
-                <Image source={require("../../../assets/emptyImage.png")} style={styles.styledimage} />
-            </View>
             <View style={styles.box2}>
                 <Text>box2</Text>
+
+
                 <TouchableOpacity onPress={addImage }>
                 <Image source={require("../../../assets/Gallery.png")} style={styles.addphoto} />
                 </TouchableOpacity>
+
+            addphoto: {
+                alignSelf: 'center',
+                width: 60,
+                height: 60,
+                borderRadius: 60 / 8,
+            },
+            
             </View>
         </View> */}
 
@@ -139,12 +151,6 @@ const styles = StyleSheet.create({
             flex: 1,
             flexDirection: 'column'
         },
-            addphoto: {
-                alignSelf: 'center',
-                width: 60,
-                height: 60,
-                borderRadius: 60 / 8,
-            },
     containtitle: {
         backgroundColor: 'red',
         padding: 10,

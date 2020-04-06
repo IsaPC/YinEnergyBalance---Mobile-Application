@@ -13,16 +13,6 @@ import ViewPlan from '../screens/viewPlan/viewPlanScreen';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// /// functions call the screens
-// function HomeScreen() {
-//     return <Home />
-// }
-
-// function LessionPlannerScreen() {
-//     return <LessionPlanner />
-// }
-
-
 // place all screens you wish to have a drawer
 const AllDrawer = props => {
     return (

@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const LessionPlanItem = props => {
     const navigation = useNavigation();
-    console.log(navigation);
+
 
     const plans = useSelector(state => state.plans.plans);
 
@@ -24,17 +24,21 @@ const LessionPlanItem = props => {
                 keyExtractor={item => item.id}
                 renderItem={itemData => (
                     <PlanItem 
+                        image={itemData.item.imageUri}
                         title={itemData.item.title} 
                         //TODO image={null} 
                         onSelect={() => {
                                 console.log('pressed view')
                                 navigation.navigate('ViewPlan', {
                                 planTitle: itemData.item.title,
-                                planId: itemData.item.id
-                                });
-                    }} />
+                                planId: itemData.item.id});
+     
+                        }}
+                        onEdit={() => {
+                            console.log('pressed edit image')
+                        }}
+                    />
                 )}
-                
             />
 };
 
