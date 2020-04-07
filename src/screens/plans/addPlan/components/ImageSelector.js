@@ -24,9 +24,8 @@ const ImgPicker = props => {
         }
         return true;
     }
-    ///
-
-
+    
+    // CHECK PERMISSIONS AND SAVE IAMGE
     const takeImageHandler = async () => {
         const hasPermission = await verifyPermissions();
         if (!hasPermission) {
@@ -38,7 +37,6 @@ const ImgPicker = props => {
             quality: 0.6,
         });
 
-        console.log(image);
         setPickedImage(image.uri);
         props.onImageTaken(image.uri);
     }
@@ -48,16 +46,16 @@ const ImgPicker = props => {
             {/* Preview Image */}
             <View style={styles.imageContainer}>
                 {!pickedImage ? (
-                    <Image style={styles.styledimage} source={require("../../../assets/emptyImage.png")} />
+                    <Image style={styles.styledimage} source={require("../../../../../assets/emptyImage.png")} />
                 ) : (
                     <Image style={styles.styledimage} source={{uri: pickedImage}} />
                 )}
                 
                 {/* TAKE IMAGE */}
 
-                <TouchableOpacity onPress={takeImageHandler } style={styles.galleryContainer}>
+                <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
                     <Image 
-                        source={require("../../../assets/Gallery.png")} 
+                        source={require("../../../../../assets/Gallery.png")} 
                         style={styles.addphoto} 
                     />
                 </TouchableOpacity>

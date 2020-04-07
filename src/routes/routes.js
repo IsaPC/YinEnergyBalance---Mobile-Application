@@ -1,43 +1,47 @@
 import * as React from 'react';
+
+// Navigation modules
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-//screen imports
-import Home from '../screens/home/IndexScreen';
-import LessionPlanner from '../screens/planSelection/PlanSelectionScreen';
-import CreatePlanScreen from '../screens/createPlan/CreatePlanScreen';
-import ViewPlan from '../screens/viewPlan/viewPlanScreen';
 
 
+// Import Screens
+import Home from '../screens/Home';
+import LessionPlanScreen from '../screens/plans/lessionPlan/LessionPlanScreen';
+import ViewPlanScreen from '../screens/plans/viewPlan/ViewPlanScreen';
+import AddPlan from '../screens/plans/addPlan/AddPlanScreen';
+// import components
+
+
+// setup Navigations
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// place all screens you wish to have a drawer
-const AllDrawer = props => {
+const DrawerNavigtator = props => {
     return (
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={Home} />
-            <Drawer.Screen name="Lession Plans" component={LessionPlanner} /> 
-            <Drawer.Screen name="AddPlan" component={CreatePlanScreen} /* TODO create custom drawer, HIDE ADDPLAN */    /> 
-            <Stack.Screen name="ViewPlan" component={ViewPlan} /* TODO create custom drawer, HIDE ADDPLAN */ />
+            <Drawer.Screen name="Lession Plan" component={LessionPlanScreen} />
         </Drawer.Navigator>
     );
 }
 
-// the last route
+
+
+// Main function
 const Routes = props => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={AllDrawer} />
-                <Stack.Screen name="Lession Plans" component={AllDrawer} /> 
-                <Stack.Screen name="AddPlan" component={AllDrawer} />
-                <Stack.Screen name="ViewPlan" component={AllDrawer} />
+                <Stack.Screen name="Home" component={DrawerNavigtator} />
+                <Stack.Screen name="Lession Plan" component={DrawerNavigtator} />
+                <Stack.Screen name="View Plan" component={ViewPlanScreen} />
+                <Stack.Screen name="Add Plan" component={AddPlan} />
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
-
 
 export default Routes;

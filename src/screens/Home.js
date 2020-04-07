@@ -1,10 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-const IndexScreen = props => {
-
-    console.log('render home');
-
+const Home = props => {
     return (
         <View style={styles.screen}>
             <Text>home screen</Text>
@@ -20,4 +17,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default IndexScreen;
+export default Home;
