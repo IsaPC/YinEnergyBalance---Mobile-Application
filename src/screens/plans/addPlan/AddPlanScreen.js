@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import {StyleSheet, View, TextInput, Button, Alert } from 'react-native';
 
+//redux
+import { useDispatch } from 'react-redux';
+import * as plansActions from '../../../store/actions/plans-actions';
+
 //import components
 import ImagePicker from './components/ImageSelector';
 
 const AddPlanScreen = props => {
+    const dispatch = useDispatch(); // used to send data to dispatch
+ 
 
     /// --- TITLE ---
     // control the title input
@@ -45,13 +51,20 @@ const AddPlanScreen = props => {
             Alert.alert("Error", "Title is empty!", [
                 {text: 'Ok', onPress: () => console.log('alert closed')}
             ]);
+         } else if (imageUri.length === 0 || !imageUri) {
+            Alert.alert("Error", "no image taken!", [
+                {text: 'Ok', onPress: () => console.log('alert closed')}
+            ]);
          }
         else {
-            
+            // what is going to be saved
             console.log("\nsaving title: " + titleValue);
             console.log("saving description: "  + descValue);
             console.log("saving image: " + imageUri + "\n");
-        //     dispatch(placesActions.addPlan(titleValue));
+            
+            // save items
+            dispatch(plansActions.addPlan(titleValue, imageUri));
+            
             props.navigation.goBack();
         }
 
@@ -80,11 +93,11 @@ const AddPlanScreen = props => {
                 value={descValue}    
             />
 
-<Button
-            onPress={SavePlanHandler}
-            title="Save"
-            color="rgb(0, 222, 7)"
-        />
+            <Button
+                onPress={SavePlanHandler}
+                title="Save"
+                color="rgb(0, 222, 7)"
+            />
         </View>
     );
 }
