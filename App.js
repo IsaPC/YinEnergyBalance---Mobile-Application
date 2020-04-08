@@ -9,6 +9,17 @@ import plansReducer from './src/store/reducers/plans-reducer';
 // routes
 import Routes from './src/routes/routes';
 
+//SQL
+import { init } from './src/helpers/db';
+
+/// initialise the database
+init().then(() => {
+    console.log('Initialized the database');
+}).catch(err => {
+    console.log('Initialized the database failed');
+    console.log(err);
+}); 
+///
 
 const rootReducer = combineReducers({
     plans: plansReducer
