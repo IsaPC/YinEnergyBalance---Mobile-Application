@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('yin.db');
-
+// place all initiation for the database here
 export const init = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -24,8 +24,29 @@ export const insertPlan = (title, imageUri, desc) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
           tx.executeSql(
-            `INSERT INTO plans (title, imageUri, description) VALUES (?, ?, ?);`,
+            `INSERT INTO plans (title, imageUri, description) VALUES (?,?,?);`,
             [title, imageUri, desc],
+            (_, result) => {
+                console.log('insert succeeded');
+                resolve(result);
+            },
+            (_, err) => {
+                console.log('insert failed');
+              reject(err);
+            });
+        });
+    });
+    
+    console.log('result: '+ promise + '\n'); // check
+    return promise;
+};
+
+export const selectAllPlans = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+          tx.executeSql(
+            `SELECT * FROM plans`,
+            [],
             (_, result) => {
               resolve(result);
             },
@@ -35,4 +56,4 @@ export const insertPlan = (title, imageUri, desc) => {
         });
     });
     return promise;
-};
+}

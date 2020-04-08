@@ -8,7 +8,13 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAN:
-        const newPlan = new Plan(new Date().toString(),
+
+        console.log("what is in action.planData.id: " + action.planData.id);
+        console.log("what is in action.planData.title: " + action.planData.title);
+        console.log("what is in action.planData.image: " + action.planData.image);
+        
+        const newPlan = new Plan(
+            action.planData.id.toString(),
             action.planData.title,
             action.planData.image);
         return {

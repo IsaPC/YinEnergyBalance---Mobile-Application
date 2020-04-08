@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 
 //import components
@@ -6,12 +6,19 @@ import AddPlanButton from '../lessionPlan/components/AddPlan';
 import PlanItem from './components/planItem';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+//sqlite
+import * as plansActions from '../../../store/actions/plans-actions';
 
 
 const LessionPlanScreen = props => {
     const plans = useSelector(state => state.plans.plans);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(plansActions.loadPlans());
+    }, [dispatch]);
 
     const addScreenHandler = () => {
         console.log('open add-screen button');
