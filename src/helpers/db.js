@@ -36,8 +36,6 @@ export const insertPlan = (title, imageUri, desc) => {
             });
         });
     });
-    
-    console.log('result: '+ promise + '\n'); // check
     return promise;
 };
 

@@ -41,13 +41,20 @@ const LessionPlanScreen = props => {
                     <PlanItem 
                     image={itemData.item.imageUri}
                     title={itemData.item.title}
-                    onSeclectPlan={() => {
+                    onSelectPlan={() => {
+                        console.log('view plan button');
                         props.navigation.navigate('View Plan', {
                             planTitle: itemData.item.title,
                             placeId: itemData.item.id
                         });
                     }}
-                    onEditPlan={() => {console.log('edit plan')}}
+                    onEditPlan={() => {
+                        console.log('edit plan button');
+                        props.navigation.navigate('Edit Plan', {
+                            planTitle: itemData.item.title,
+                            placeId: itemData.item.id                            
+                        });
+                        }}
                     />
                      )}
             />

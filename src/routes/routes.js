@@ -12,6 +12,7 @@ import Home from '../screens/Home';
 import LessionPlanScreen from '../screens/plans/lessionPlan/LessionPlanScreen';
 import ViewPlanScreen from '../screens/plans/viewPlan/ViewPlanScreen';
 import AddPlan from '../screens/plans/addPlan/AddPlanScreen';
+import EditPlan from '../screens/plans/editPlan/EditPlanScreen';
 // import components
 
 
@@ -39,6 +40,7 @@ const Routes = props => {
                 <Stack.Screen name="Lession Plan" component={DrawerNavigtator} />
                 <Stack.Screen name="View Plan" component={ViewPlanScreen} />
                 <Stack.Screen name="Add Plan" component={AddPlan} />
+                <Stack.Screen name="Edit Plan" component={EditPlan} />
             </Stack.Navigator>
         </NavigationContainer>
     );

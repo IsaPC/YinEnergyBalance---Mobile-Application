@@ -24,10 +24,9 @@ export const addPlan = (title, image) => {
                 newPath,
                 "test"
                 );
-            console.log("\nDatabase result: " + dbResult.id + "\n" + dbResult.title + "\n" );
-
+                console.log(dbResult);
             // send to the redux store
-            dispatch({type: ADD_PLAN, planData: {id : dbResult.id ,title: title, image: newPath}});
+            dispatch({type: ADD_PLAN, planData: {id : dbResult.insertId ,title: title, image: newPath}});
         } catch (err) {
             console.log(err);
             throw err;
@@ -43,7 +42,7 @@ export const loadPlans = () => {
         try {
             const dbResult = await selectAllPlans();
             console.log("\nDatabase result: " + dbResult + "\n");
-            dispatch({type: SET_PLANS, plans: [] });
+            dispatch({type: SET_PLANS, plans: dbResult.rows._array });
         } catch (err) {
             throw err;
         }

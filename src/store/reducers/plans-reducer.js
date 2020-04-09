@@ -1,4 +1,4 @@
-import { ADD_PLAN } from '../actions/plans-actions';
+import { ADD_PLAN, SET_PLANS } from '../actions/plans-actions';
 import Plan from '../../models/plan';
 
 const initialState = {
@@ -7,14 +7,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PLAN:
+    case SET_PLANS:
+        return {
+            plans: action.plans.map(pl => new Plan(pl.id.toString(), pl.title, pl.imageUri))
+        };
 
-        console.log("what is in action.planData.id: " + action.planData.id);
-        console.log("what is in action.planData.title: " + action.planData.title);
-        console.log("what is in action.planData.image: " + action.planData.image);
-        
+    case ADD_PLAN:
         const newPlan = new Plan(
-            action.planData.id.toString(),
+            action.planData.id.toString(), // do i need string?
             action.planData.title,
             action.planData.image);
         return {
