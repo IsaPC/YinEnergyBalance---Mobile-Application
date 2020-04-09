@@ -63,7 +63,7 @@ const AddPlanScreen = props => {
             console.log("saving image: " + imageUri + "\n");
             
             // save items
-            dispatch(plansActions.addPlan(titleValue, imageUri));
+            dispatch(plansActions.addPlan(titleValue, imageUri, descValue));
             
             props.navigation.goBack();
         }

@@ -44,15 +44,19 @@ const LessionPlanScreen = props => {
                     onSelectPlan={() => {
                         console.log('view plan button');
                         props.navigation.navigate('View Plan', {
+                            planId: itemData.item.id,
                             planTitle: itemData.item.title,
-                            placeId: itemData.item.id
+                            imageUri: itemData.item.imageUri, 
+                            description: itemData.item.description   
                         });
                     }}
                     onEditPlan={() => {
                         console.log('edit plan button');
                         props.navigation.navigate('Edit Plan', {
+                            planId: itemData.item.id,
                             planTitle: itemData.item.title,
-                            placeId: itemData.item.id                            
+                            imageUri: itemData.item.imageUri, 
+                            description: itemData.item.description                
                         });
                         }}
                     />
