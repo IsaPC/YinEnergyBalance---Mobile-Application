@@ -1,0 +1,15 @@
+"filename", "language", "JavaScript", "comment", "blank", "total"
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\helpers\db.js", "JavaScript", 69, 1, 4, 74
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\models\plan.js", "JavaScript", 9, 0, 1, 10
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\routes\routes.js", "JavaScript", 33, 5, 11, 49
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\Home.js", "JavaScript", 17, 0, 3, 20
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\AddPlanScreen.js", "JavaScript", 72, 18, 21, 111
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\components\ImageSelector.js", "JavaScript", 78, 8, 16, 102
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\editPlan\EditPlanScreen.js", "JavaScript", 73, 21, 22, 116
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\LessionPlanScreen.js", "JavaScript", 64, 3, 16, 83
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\AddPlan.js", "JavaScript", 21, 0, 5, 26
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\planItem.js", "JavaScript", 38, 0, 4, 42
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\viewPlan\ViewPlanScreen.js", "JavaScript", 37, 2, 8, 47
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\actions\plans-actions.js", "JavaScript", 69, 21, 18, 108
+"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\reducers\plans-reducer.js", "JavaScript", 24, 0, 4, 28
+"Total", "-", 604, 79, 133, 816

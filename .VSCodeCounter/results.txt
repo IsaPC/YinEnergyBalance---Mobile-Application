@@ -1,0 +1,51 @@
+Date : 2020-04-09 19:38:16
+Directory : c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src
+Total : 13 files,  604 codes, 79 comments, 133 blanks, all 816 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         13 |        604 |         79 |        133 |        816 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                        | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                           |         13 |        604 |         79 |        133 |        816 |
+| helpers                                                                                                     |          1 |         69 |          1 |          4 |         74 |
+| models                                                                                                      |          1 |          9 |          0 |          1 |         10 |
+| routes                                                                                                      |          1 |         33 |          5 |         11 |         49 |
+| screens                                                                                                     |          8 |        400 |         52 |         95 |        547 |
+| screens\plans                                                                                               |          7 |        383 |         52 |         92 |        527 |
+| screens\plans\addPlan                                                                                       |          2 |        150 |         26 |         37 |        213 |
+| screens\plans\addPlan\components                                                                            |          1 |         78 |          8 |         16 |        102 |
+| screens\plans\editPlan                                                                                      |          1 |         73 |         21 |         22 |        116 |
+| screens\plans\lessionPlan                                                                                   |          3 |        123 |          3 |         25 |        151 |
+| screens\plans\lessionPlan\components                                                                        |          2 |         59 |          0 |          9 |         68 |
+| screens\plans\viewPlan                                                                                      |          1 |         37 |          2 |          8 |         47 |
+| store                                                                                                       |          2 |         93 |         21 |         22 |        136 |
+| store\actions                                                                                               |          1 |         69 |         21 |         18 |        108 |
+| store\reducers                                                                                              |          1 |         24 |          0 |          4 |         28 |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                    | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\helpers\db.js                                     | JavaScript |         69 |          1 |          4 |         74 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\models\plan.js                                    | JavaScript |          9 |          0 |          1 |         10 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\routes\routes.js                                  | JavaScript |         33 |          5 |         11 |         49 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\Home.js                                   | JavaScript |         17 |          0 |          3 |         20 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\AddPlanScreen.js            | JavaScript |         72 |         18 |         21 |        111 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\components\ImageSelector.js | JavaScript |         78 |          8 |         16 |        102 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\editPlan\EditPlanScreen.js          | JavaScript |         73 |         21 |         22 |        116 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\LessionPlanScreen.js    | JavaScript |         64 |          3 |         16 |         83 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\AddPlan.js   | JavaScript |         21 |          0 |          5 |         26 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\planItem.js  | JavaScript |         38 |          0 |          4 |         42 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\viewPlan\ViewPlanScreen.js          | JavaScript |         37 |          2 |          8 |         47 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\actions\plans-actions.js                    | JavaScript |         69 |         21 |         18 |        108 |
+| c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\reducers\plans-reducer.js                   | JavaScript |         24 |          0 |          4 |         28 |
+| Total                                                                                                       |            |        604 |         79 |        133 |        816 |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

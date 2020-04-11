@@ -67,8 +67,6 @@ const AddPlanScreen = props => {
             
             props.navigation.goBack();
         }
-
-
     }
     ///
 

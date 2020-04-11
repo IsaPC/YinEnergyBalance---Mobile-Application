@@ -55,3 +55,20 @@ export const selectAllPlans = () => {
     });
     return promise;
 }
+
+export const updatePlan = (id, title, imageUri , description) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+          tx.executeSql(
+            'UPDATE plans SET title=?, imageUri=?, description=? WHERE id=?;',
+            [title, imageUri, description, id],
+            (_, result) => {
+              resolve(result);
+            },
+            (_, err) => {
+              reject(err);
+            });
+        });
+    });
+    return promise;
+}
