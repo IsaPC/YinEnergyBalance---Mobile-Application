@@ -10,11 +10,9 @@ const ViewPlanScreen = props => {
 
     // select the id from redux from db
     const selectedPlan = useSelector(state =>
-        state.plans.plans.find(plan => plan.id === planId.toString())
+        state.plans.plans.find(plan => plan.id.toString() === planId.toString())
         );
 
-        console.log('\n\nwhats in the selected plan:');
-        console.log(selectedPlan.imageUri.toString());
 
     return (
         <ScrollView>

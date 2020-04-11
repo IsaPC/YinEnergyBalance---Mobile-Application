@@ -8,6 +8,7 @@ import * as plansActions from '../../../store/actions/plans-actions';
 // navigation guide https://reactnavigation.org/docs/params/
 
 const EditPlanScreen = props => {
+
     const dispatch = useDispatch(); // used to send data to dispatch
 
 
@@ -15,7 +16,7 @@ const EditPlanScreen = props => {
 
     // select the id from redux from db
     const selectedPlan = useSelector(state =>
-        state.plans.plans.find(plan => plan.id === planId.toString())
+        state.plans.plans.find(plan => plan.id.toString() === planId.toString())
     );
 
     // console.log('\n\nwhats in the selected plan:');
@@ -66,7 +67,9 @@ const EditPlanScreen = props => {
             
             // update items
             dispatch(plansActions.editPlan(selectedPlan.id, titleValue, selectedPlan.imageUri, imageUri, descValue));
-            
+
+            ;
+            //props.navigation.state.params.refresh();
             props.navigation.goBack();
         }
     }
