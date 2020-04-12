@@ -12,6 +12,9 @@ import Home from '../screens/Home';
 
 // import components
 import ListPlan from '../screens/ListPlansScreen';
+import AddPlan from '../screens/AddPlanScreen';
+import ViewPlan from '../screens/ViewPlanScreen';
+import EditPlan from '../screens/EditPlanScreen';
 
 // setup Navigations
 const Stack = createStackNavigator();
@@ -35,6 +38,9 @@ const Routes = props => {
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={DrawerNavigtator} />
                 <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
+                <Stack.Screen name="Add Plan" component={AddPlan} />
+                <Stack.Screen name="View Plan" component={ViewPlan} />
+                <Stack.Screen name="Edit Plan" component={EditPlan} />
             </Stack.Navigator>
         </NavigationContainer>
     );
