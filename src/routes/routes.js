@@ -9,12 +9,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // Import Screens
 import Home from '../screens/Home';
-import LessionPlanScreen from '../screens/plans/lessionPlan/LessionPlanScreen';
-import ViewPlanScreen from '../screens/plans/viewPlan/ViewPlanScreen';
-import AddPlan from '../screens/plans/addPlan/AddPlanScreen';
-import EditPlan from '../screens/plans/editPlan/EditPlanScreen';
-// import components
 
+// import components
+import ListPlan from '../screens/ListPlansScreen';
 
 // setup Navigations
 const Stack = createStackNavigator();
@@ -24,7 +21,7 @@ const DrawerNavigtator = props => {
     return (
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={Home} />
-            <Drawer.Screen name="Lession Plan" component={LessionPlanScreen} />
+            <Drawer.Screen name="Lession Plans" component={ListPlan} />
         </Drawer.Navigator>
     );
 }
@@ -37,10 +34,7 @@ const Routes = props => {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={DrawerNavigtator} />
-                <Stack.Screen name="Lession Plan" component={DrawerNavigtator} />
-                <Stack.Screen name="View Plan" component={ViewPlanScreen} />
-                <Stack.Screen name="Add Plan" component={AddPlan} />
-                <Stack.Screen name="Edit Plan" component={EditPlan} />
+                <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
             </Stack.Navigator>
         </NavigationContainer>
     );

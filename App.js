@@ -1,16 +1,13 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
 
-//import reducer
-import plansReducer from './src/store/reducers/plans-reducer';
+//import context
+import PlandContextProvider from './src/contexts/PlanContext';
 
 // routes
 import Routes from './src/routes/routes';
 
 //SQL
-import { init } from './src/helpers/db';
+import { init } from './src/database/db.js';
 
 /// initialise the database
 init().then(() => {
@@ -21,17 +18,13 @@ init().then(() => {
 }); 
 ///
 
-const rootReducer = combineReducers({
-    plans: plansReducer
-});
-
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 function App() {
   return (
-    <Provider store={store}>
+    <PlandContextProvider>
         <Routes />
-    </Provider>
+    </PlandContextProvider>
+        
   );
 }
 

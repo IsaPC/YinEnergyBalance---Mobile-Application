@@ -1,0 +1,3 @@
+tested on android 8.1.0 dev simulation on android studio
+    - image does not save after giving permissions
+        - mititgation photo, close cammera and re-open - fixes the problem    
