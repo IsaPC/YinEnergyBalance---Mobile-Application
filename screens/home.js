@@ -1,13 +1,24 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
-
+import { AsyncStorage } from 'react-native';
 export default function Home({ navigation }) {
  
-  const pressHandler = () => {
+  const pressHandler = async () => {
     //navigation.navigate('ReviewDetails');
-    navigation.push('Register');
+   navigation.push('Register');
+   
   }
+  const print = async () => {
+    //navigation.navigate('ReviewDetails');
+   // navigation.push('Register');
+   console.log(await AsyncStorage.getItem('NAME'));
+   console.log(await AsyncStorage.getItem('AGE'));
+   console.log(await AsyncStorage.getItem('ADDRESS'));
+   console.log(await AsyncStorage.getItem('PHONE'));
+   
+  }
+
 
   return (
     <View style={globalStyles.container}>
@@ -16,6 +27,7 @@ export default function Home({ navigation }) {
         Enjoy.</Text>
       <Button title= 'Register' onPress={pressHandler} />
       
+      <Button title= 'Print' onPress={print} />
     </View>
 
   );

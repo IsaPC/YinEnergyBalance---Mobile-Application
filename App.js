@@ -3,8 +3,6 @@ import * as Font from 'expo-font'
 import Home from './screens/home';
 import { AppLoading } from 'expo';
 import Navigator from './routes/drawer';
-
-
 const getFonts = () => Font.loadAsync({
   'Nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
   'Nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),

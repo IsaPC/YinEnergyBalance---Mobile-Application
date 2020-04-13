@@ -4,10 +4,6 @@ import logo from '../assets/yin.png';
 export default function Session() {
     return (
         <View style={styles.content}>
-            <Text style={styles.uppertext}>
-                YIN YOGA OR UNBRIDLED.
-                EMBODIMENT.LIVING COACHING
-            </Text>
             <Image source={logo} style={styles.logo} />
             <Text style={styles.instructions} >
                 Through an ongoing, gentle, physical practice of Yin Yoga begin to create space in both body and mind to explore self.
@@ -28,8 +24,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 360,
-        height: 200,
-        marginTop: 20,
+        height: 285,
+        marginTop: -18,
         marginBottom: 10,
     },
     instructions: {
