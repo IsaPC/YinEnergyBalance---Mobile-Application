@@ -55,7 +55,7 @@ const ImgPicker = props => {
 
                 <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
                     <Image 
-                        source={require("../../../assets/Gallery.png")} 
+                        source={require("../../../assets/Camera_Icon.png")} 
                         style={styles.addphoto} 
                     />
                 </TouchableOpacity>
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
     },
     //gallary Container
     galleryContainer: {
-        height: 70,
+        height: 580*0.2,
+        width: 497*0.2,
         paddingHorizontal: 10,
         backgroundColor: 'green',
         alignItems: "center",

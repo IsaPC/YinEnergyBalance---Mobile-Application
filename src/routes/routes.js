@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
+//context
+import {PlanContext} from '../contexts/PlanContext';
 
 // Import Screens
 import Home from '../screens/Home';
@@ -33,6 +35,10 @@ const DrawerNavigtator = props => {
 
 // Main function
 const Routes = props => {
+    const { loadAllPlans } = React.useContext(PlanContext);
+    loadAllPlans();
+
+
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">

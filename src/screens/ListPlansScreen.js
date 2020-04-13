@@ -8,11 +8,18 @@ import AddPlan from "./Components/AddPlan";
 import PlanItem from './Components/planItem';
 
 const ListPlanScreen = props => {
+
+    //TODO
+    // useEffect(() => {
+    //     dispatch(placesActions.loadPlaces());
+    //   }, [dispatch]);
+
+
     const { plans } = useContext(PlanContext);
 
-    console.log("\n\nabout to display data to flatlist")
-    console.log(plans);
-    console.log("end\n\n");
+    // console.log("\n\nabout to display data to flatlist")
+    // console.log(plans);
+    // console.log("end\n\n");
     
     const addScreenHandler = () => {
         console.log('open add-screen button');
