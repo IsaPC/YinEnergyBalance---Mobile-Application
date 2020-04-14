@@ -1,3 +1,5 @@
 tested on android 8.1.0 dev simulation on android studio
     - image does not save after giving permissions
-        - mititgation photo, close cammera and re-open - fixes the problem    
+        TEMP FIX: mititgation photo, close cammera and re-open - fixes the problem   
+    - list scrolling does not scroll to the bottem properly
+

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PlanContext } from '../contexts/PlanContext';
 
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ScrollView} from 'react-native';
 
 //import components
 import AddPlan from "./Components/AddPlan";
@@ -29,38 +29,36 @@ const ListPlanScreen = props => {
     return (
         <View>
             <AddPlan onPress={addScreenHandler} />
-
-
-            {/* amount of lession plans<Text>{ plans.length }</Text> */}
-            <FlatList 
-                data={plans}
-                // {...console.log(plans)} // TODO image not being saved
-                keyExtractor={item => item.id}
-                renderItem={ itemData => (
-                    <PlanItem 
-                    image={itemData.item.imageUri}
-                    title={itemData.item.title}
-                    onSelectPlan={() => {
-                        console.log('view plan button');
-                        props.navigation.navigate('View Plan', {
-                            planId: itemData.item.id,
-                            planTitle: itemData.item.title,
-                            imageUri: itemData.item.imageUri, 
-                            description: itemData.item.description   
-                        });
-                    }}
-                    onEditPlan={() => {
-                        console.log('edit plan button');
-                        props.navigation.navigate('Edit Plan', {
-                            planId: itemData.item.id,
-                            planTitle: itemData.item.title,
-                            imageUri: itemData.item.imageUri, 
-                            description: itemData.item.description                
-                        });
+                {/* amount of lession plans<Text>{ plans.length }</Text> */}
+                <FlatList 
+                    data={plans}
+                    // {...console.log(plans)} // TODO image not being saved
+                    keyExtractor={item => item.id}
+                    renderItem={ itemData => (
+                        <PlanItem 
+                        image={itemData.item.imageUri}
+                        title={itemData.item.title}
+                        onSelectPlan={() => {
+                            console.log('view plan button');
+                            props.navigation.navigate('View Plan', {
+                                planId: itemData.item.id,
+                                planTitle: itemData.item.title,
+                                imageUri: itemData.item.imageUri, 
+                                description: itemData.item.description   
+                            });
                         }}
-                    />
-                     )}
-            />
+                        onEditPlan={() => {
+                            console.log('edit plan button');
+                            props.navigation.navigate('Edit Plan', {
+                                planId: itemData.item.id,
+                                planTitle: itemData.item.title,
+                                imageUri: itemData.item.imageUri, 
+                                description: itemData.item.description                
+                            });
+                            }}
+                        />
+                        )}
+                />
         </View>
     );
 }

@@ -2,6 +2,7 @@ import React, {createContext, useState, useEffect } from 'react';
 import uuid from 'uuid/v1';
 
 import { insertPlan, updatePlan, selectAllPlans } from '../database/db';
+import Plan from '../models/plan';
 
 export const PlanContext = createContext(); 
 
@@ -12,13 +13,37 @@ const PlanContextProvider = props => {
     // useEffect( () => {
     //     setPlans(selectAllPlans());
     // }, [plans])
+  
 
+    // a usehook to help only call selectAllPlans once
+    const [bool, setBool] = useState(true); 
+
+    /*note: yes I know it's still being called over and over again,
+    * but currently it's the lesser evil 
+    */
     const loadAllPlans = async () => {
-        let dbresultSet = await selectAllPlans();
-        console.log('\nloading items from sql to state');
-        console.log('data being transfered: ')
-        console.log(dbresultSet)
-        setPlans(dbresultSet);
+        if (bool) {
+            console.log(bool)
+            let dbresultSet = await selectAllPlans();
+            console.log('\nloading items from sql to state');
+            console.log('data being transfered: ')
+            //console.log(dbresultSet.rows._array)
+            //TODO loop array and set plans
+
+            let tempArray = dbresultSet.rows._array.map(pl => new Plan(
+                pl.id.toString(),
+                pl.title,
+                pl.imageUri,
+                pl.description,
+            ));
+            // https://stackoverflow.com/questions/19529403/javascript-loop-through-object-array
+
+            console.log(tempArray);
+            setPlans(tempArray);
+
+            setBool(false);
+        }
+
     }
 
     const addPlan = async (title, imageUri, description) => {
