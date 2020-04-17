@@ -35,8 +35,10 @@ const DrawerNavigtator = props => {
 
 // Main function
 const Routes = props => {
-    const { loadAllPlans } = React.useContext(PlanContext);
-    loadAllPlans();
+
+        const { loadAllPlans } = React.useContext(PlanContext);
+        loadAllPlans();
+
 
 
     return (

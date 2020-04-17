@@ -1,14 +1,17 @@
 import React, { useState, useContext } from 'react';
 import {StyleSheet, ScrollView, Image, View, Text, TextInput, Button } from 'react-native';
 
+import ImgPicker from './Components/editImagePicker';
+
 //context
 import { PlanContext } from '../contexts/PlanContext';
+import { deletePlan } from '../database/db';
 
 // navigation guide https://reactnavigation.org/docs/params/
 
 const EditPlanScreen = props => {
     //context
-    const {editPlan } = useContext(PlanContext);
+    const {editPlan, removePlan } = useContext(PlanContext);
     
 
 
@@ -40,6 +43,7 @@ const EditPlanScreen = props => {
     //save image url
     const [imageValueUri, setImageUri] = useState(imageUri);
 
+    
     const imageTakenHandler = imagePath => {
         setImageUri(imagePath);
     }
@@ -58,19 +62,24 @@ const EditPlanScreen = props => {
             // what is going to be saved
             console.log('\n\nclicked on save');
             console.log('values being saved: ');
-            console.log(titleValue + '\n' + imageUri + '\n' + descValue);
+            console.log(titleValue + '\n' + imageValueUri + '\n' + descValue);
             console.log('going to "EditPlan from context"\n\n');
             
-            editPlan(planId, titleValue, imageValueUri, descValue);
+            editPlan(planId, titleValue, imageUri,imageValueUri, descValue);
             props.navigation.goBack();
         }
     }
     ///
 
+    const deletePlanHandler = () => {
+        removePlan(planId, imageValueUri);
+        props.navigation.goBack();
+    }
+
     return (
         <ScrollView>
             <View>
-                <Image style={styles.image} source={{uri: imageValueUri}} />
+            <ImgPicker onImageTaken={imageTakenHandler} oldImage={imageUri}/>
             </View>
 
             <TextInput
@@ -91,6 +100,11 @@ const EditPlanScreen = props => {
                 title="Save"
                 color="rgb(0, 222, 7)"
             />
+
+            <Button onPress={deletePlanHandler}
+                title="delete"
+                color="rgb(168, 9, 217)"
+            />
         </ScrollView>
     );
 }
@@ -100,11 +114,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignSelf: 'center'
-    },
-    image: {
-        width: 250, height: 250,
-        borderRadius: 250,
-        backgroundColor: 'purple'
     }
 });
 

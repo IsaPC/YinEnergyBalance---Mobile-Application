@@ -1,7 +1,9 @@
 import React, {createContext, useState, useEffect } from 'react';
 import uuid from 'uuid/v1';
 
-import { insertPlan, updatePlan, selectAllPlans } from '../database/db';
+import * as FileSystem from 'expo-file-system';
+
+import { insertPlan, updatePlan, selectAllPlans, deletePlan } from '../database/db';
 import Plan from '../models/plan';
 
 export const PlanContext = createContext(); 
@@ -44,12 +46,20 @@ const PlanContextProvider = props => {
             setBool(false);
         }
 
-    }
+    }; // END
 
     const addPlan = async (title, imageUri, description) => {
         //TODO insert into database
+        //turn image link frpm temp localtion to local location
+        const fileName = imageUri.split('/').pop();
+        const newPath = FileSystem.documentDirectory + fileName;
 
-        const dbResult = await insertPlan(title, imageUri, description);
+        //store image to local file system
+        await FileSystem.moveAsync({
+            from: imageUri,
+            to: newPath
+        });
+        const dbResult = await insertPlan(title, newPath, description);
 
         console.log('what is in the database:');
         console.log(dbResult);
@@ -64,20 +74,58 @@ const PlanContextProvider = props => {
             console.log('\n');
         }
         
-    };
+    }; // END
 
     //TODO
-    const removePlan = (id) => {
-        //TODO delete from database
+    const removePlan = async (id, imageUri) => {
+
+        // delete image from file system
+        await FileSystem.deleteAsync(imageUri);
+
+        // delete from database
+        await deletePlan(id);
+
         setPlans(plans.filter(plan => plan.id !== id));
-    };
+    }; // END
 
-    const editPlan = async (id, title, imageUri, description) => {
-        await updatePlan(id, title, imageUri, description);
+    const editPlan = async (id, title, oldImage , imageUri, description) => {
 
-        console.log('setting plans in context');
-        setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: imageUri, description: description} : item ));
-    }
+        if (oldImage === imageUri) {
+            console.log('\n');
+            console.log('they are the same image');
+            console.log('\n');
+
+            await updatePlan(id, title, imageUri, description);
+            setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: newPath, description: description} : item ));
+            console.log('completed editing plan in context');
+        } else {
+            /**
+             * delete old image
+             * save new image
+             * update database
+             * update useState array
+             */
+            await FileSystem.deleteAsync(oldImage);
+
+            const fileName = imageUri.split('/').pop();
+            const newPath = FileSystem.documentDirectory + fileName;
+
+            // save newImage to local file system
+            await FileSystem.moveAsync({
+                from: imageUri,
+                to: newPath
+            });
+
+            // insert into database
+            await updatePlan(id, title, newPath, description);
+            setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: newPath, description: description} : item ));
+            console.log('completed editing plan in context');
+        } // END IF
+
+
+
+        
+    } // END
 
 
 

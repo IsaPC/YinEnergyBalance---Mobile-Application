@@ -19,7 +19,6 @@ init();
 
 function App() {
 
-
   return (
     <PlandContextProvider>
         <Routes />

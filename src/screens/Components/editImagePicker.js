@@ -7,10 +7,10 @@ import * as ImagePicker from 'expo-image-picker';
 // IOS - permissions import
 import * as Permissions from 'expo-permissions';
 
-const ImgPicker = props => {
+const EditImgPicker = props => {
     //save image URI
     const [pickedImage, setPickedImage] = useState();
-
+    const [oldImage, setOldImage] = useState(props.oldImage);
 
     /// IOS only - ask for camera permissions
     const verifyPermissions = async () => {
@@ -46,7 +46,7 @@ const ImgPicker = props => {
             {/* Preview Image */}
             <View style={styles.imageContainer}>
                 {!pickedImage ? (
-                    <Image style={styles.styledimage} source={require("../../../assets/emptyImage.png")} />
+                    <Image style={styles.styledimage} source={{uri: oldImage}} />
                 ) : (
                     <Image style={styles.styledimage} source={{uri: pickedImage}} />
                 )}
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ImgPicker;
+export default EditImgPicker;
