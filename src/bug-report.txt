@@ -1,5 +1,12 @@
 tested on android 8.1.0 dev simulation on android studio
+plans:
     - image does not save after giving permissions
         TEMP FIX: mititgation photo, close cammera and re-open - fixes the problem   
     - list scrolling does not scroll to the bottem properly
+
+    - removeing plan, then editing onther plan gives error - FIX NEEDED
+
+calender:
+    - setting another time, reflects the wrong time - FIX NEEDED
+
 
