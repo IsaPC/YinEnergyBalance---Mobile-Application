@@ -30,4 +30,7 @@ export const globalStyles = StyleSheet.create({
     height: 90,
     marginBottom: 30,
   },
+  but2: {
+    padding: 10,
+  }
 });

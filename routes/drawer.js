@@ -3,7 +3,7 @@ import { createAppContainer } from 'react-navigation';
 
 // stacks
 import HomeStack from './homeStack';
-import coachStack from './coachStack';
+import sessionStack from './sessionStack';
 import registerStack from '../screens/register';
 
 // drawer navigation options
@@ -12,7 +12,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     screen: HomeStack,
   },
   Coach: {
-    screen: coachStack,
+    screen: sessionStack,
   },
   Register:{
     screen: registerStack,

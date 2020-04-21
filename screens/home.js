@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { AsyncStorage } from 'react-native';
+
 export default function Home({ navigation }) {
  
   const pressHandler = async () => {
@@ -9,13 +10,17 @@ export default function Home({ navigation }) {
    navigation.push('Register');
    
   }
-  const print = async () => {
+  const ViewUsers = async () => {
     //navigation.navigate('ReviewDetails');
    // navigation.push('Register');
-   console.log(await AsyncStorage.getItem('NAME'));
-   console.log(await AsyncStorage.getItem('AGE'));
-   console.log(await AsyncStorage.getItem('ADDRESS'));
-   console.log(await AsyncStorage.getItem('PHONE'));
+   console.log(await A
+    
+    );
+   console.log(await AsyncStorage.getItem('Age'));
+   console.log(await AsyncStorage.getItem('Address'));
+   console.log(await AsyncStorage.getItem('Phone'));
+   console.log(await AsyncStorage.getItem('Email'));
+   console.log(await AsyncStorage.getItem('Note'));
    
   }
 
@@ -27,7 +32,7 @@ export default function Home({ navigation }) {
         Enjoy.</Text>
       <Button title= 'Register' onPress={pressHandler} />
       
-      <Button title= 'Print' onPress={print} />
+      <Button style={globalStyles.but2} title= 'Show Users' onPress={ViewUsers} />
     </View>
 
   );

@@ -1,16 +1,16 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import coach from '../screens/coach';
+import coach from '../screens/session';
 import React from 'react';
 import Header from '../shared/header';
 
 const screens = {
-    Coach: {
-      screen: coach,
-      navigationOptions: {
-          headerTitle: () => <Header />
-      }
-    }  
-       
+  Session: {
+    screen: coach,
+    navigationOptions: {
+        title: 'Session',
+    }
+  }  
+     
 };
 
 // home stack navigator screens
