@@ -1,5 +1,5 @@
-import React, {createContext, useState, useEffect } from 'react';
-import uuid from 'uuid/v1';
+import React, {createContext, useState} from 'react';
+
 
 import * as FileSystem from 'expo-file-system';
 
