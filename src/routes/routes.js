@@ -12,11 +12,15 @@ import {PlanContext} from '../contexts/PlanContext';
 // Import Screens
 import Home from '../screens/Home';
 
-// import components
+/// import components
+// plans
 import ListPlan from '../screens/ListPlansScreen';
 import AddPlan from '../screens/AddPlanScreen';
 import ViewPlan from '../screens/ViewPlanScreen';
 import EditPlan from '../screens/EditPlanScreen';
+// calendar
+import CalendarScreen from '../screens/CalendarScreen';
+
 
 // setup Navigations
 const Stack = createStackNavigator();
@@ -27,6 +31,7 @@ const DrawerNavigtator = props => {
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Lession Plans" component={ListPlan} />
+            <Drawer.Screen name="Calendar" component={CalendarScreen} />
         </Drawer.Navigator>
     );
 }
@@ -35,7 +40,7 @@ const DrawerNavigtator = props => {
 
 // Main function
 const Routes = props => {
-
+        // initial load when app starts
         const { loadAllPlans } = React.useContext(PlanContext);
         loadAllPlans();
 
@@ -45,10 +50,16 @@ const Routes = props => {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={DrawerNavigtator} />
+
+                {/* plans */}
                 <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
                 <Stack.Screen name="Add Plan" component={AddPlan} />
                 <Stack.Screen name="View Plan" component={ViewPlan} />
                 <Stack.Screen name="Edit Plan" component={EditPlan} />
+
+                {/* calandar/ session creator */}
+                <Stack.Screen name="Calendar" component={DrawerNavigtator} />
+
             </Stack.Navigator>
         </NavigationContainer>
     );

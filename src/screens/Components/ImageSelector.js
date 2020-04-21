@@ -68,8 +68,7 @@ const ImgPicker = props => {
 
 const styles = StyleSheet.create({
     imageContainer: {
-        alignSelf: 'center',
-        justifyContent: "center",
+        padding: 10,
         paddingRight: 50,
         margin: 0,
         flexDirection: 'row'

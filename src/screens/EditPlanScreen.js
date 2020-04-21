@@ -72,6 +72,7 @@ const EditPlanScreen = props => {
     ///
 
     const deletePlanHandler = () => {
+        console.log('delete plan: ' + titleValue);
         removePlan(planId, imageValueUri);
         props.navigation.goBack();
     }

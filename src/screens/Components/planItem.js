@@ -4,15 +4,18 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 const planItem = props => {
     return (
         <View style={styles.planItem}>
-            <TouchableOpacity onPress={props.onSelectPlan} stlye={{flexDirection: 'row', alignItems: 'center',}}>
-                <Image style={styles.image} source={{uri: props.image}} />
-                <View style={styles.view}>
-                    <Text style={styles.title}>{props.title}</Text>
+            <TouchableOpacity 
+                style={styles.viewplan} 
+                onPress={props.onSelectPlan}
+            >
+                <View style={{flexDirection: 'row'}}>
+                    <Image style={styles.image} source={{uri: props.image}} />
+                    <Text style={styles.title}> {props.title} </Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={props.onEditPlan}>
-                <Text style={styles.edit}>edit</Text>
+            <TouchableOpacity style={styles.edit} onPress={props.onEditPlan}>
+                <Text style={{color: 'blue', fontSize: 18}}>edit</Text>
             </TouchableOpacity>
         </View>
     );
@@ -21,22 +24,32 @@ const planItem = props => {
 const styles = StyleSheet.create({
     planItem: {
         flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 15
+        paddingVertical: 8,
+        justifyContent: 'space-between',
     },
-    image: {
-        width: 50, height: 50,
-        borderRadius: 25,
-        backgroundColor: 'purple'
-    },
-    title: {
-        backgroundColor: 'blue'
-    },
-    edit: {
-        alignSelf: 'flex-end',
-        color: 'blue',
-        backgroundColor: 'red'
-    }
+        viewplan: {
+            flexDirection: 'row', 
+            alignItems: 'center',
+            //backgroundColor: 'red'
+        },
+        image: {
+            width: 50, height: 50,
+            borderRadius: 25,
+            //backgroundColor: 'purple',
+            paddingRight: 3,
+        },
+        title: {
+            alignSelf: 'center',
+            //backgroundColor: 'blue',
+            padding: 8,
+            fontSize: 18,
+        },
+        edit: {
+            justifyContent: 'flex-end',
+            alignSelf: 'center',
+            //backgroundColor: 'green',
+            paddingRight: 8
+        }
 });
 
 export default planItem;

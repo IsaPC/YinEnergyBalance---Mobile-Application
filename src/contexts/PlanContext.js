@@ -12,9 +12,7 @@ const PlanContextProvider = props => {
     const [ plans, setPlans ] = useState([
     ]);
 
-    // useEffect( () => {
-    //     setPlans(selectAllPlans());
-    // }, [plans])
+
   
 
     // a usehook to help only call selectAllPlans once
@@ -30,7 +28,6 @@ const PlanContextProvider = props => {
             console.log('\nloading items from sql to state');
             console.log('data being transfered: ')
             //console.log(dbresultSet.rows._array)
-            //TODO loop array and set plans
 
             let tempArray = dbresultSet.rows._array.map(pl => new Plan(
                 pl.id.toString(),
@@ -49,7 +46,7 @@ const PlanContextProvider = props => {
     }; // END
 
     const addPlan = async (title, imageUri, description) => {
-        //TODO insert into database
+
         //turn image link frpm temp localtion to local location
         const fileName = imageUri.split('/').pop();
         const newPath = FileSystem.documentDirectory + fileName;
@@ -76,7 +73,6 @@ const PlanContextProvider = props => {
         
     }; // END
 
-    //TODO
     const removePlan = async (id, imageUri) => {
 
         // delete image from file system

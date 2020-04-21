@@ -3,12 +3,17 @@ import * as SQLite from 'expo-sqlite';
 
 
 const db = SQLite.openDatabase('yin.db');
+
 // place all initiation for the database here
 export const init = async () => {
+    //create tables if not exists plans
+    //TODO create tables if not exists sessions
+    //TODO create tables if not exists register
+
     CreatePlans().then(() => {
         console.log('Initialized plans table');
     }).catch(err => {
-        console.log('Initialized the database failed');
+        console.log('Initialized the table plans failed');
         console.log(err);
     }); 
 

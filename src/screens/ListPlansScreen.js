@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PlanContext } from '../contexts/PlanContext';
 
-import {View, Text, FlatList, ScrollView} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 
 //import components
 import AddPlan from "./Components/AddPlan";
@@ -28,7 +28,10 @@ const ListPlanScreen = props => {
 
     return (
         <View>
-            <AddPlan onPress={addScreenHandler} />
+            <View style={styles.buttnPos}>
+                <AddPlan onPress={addScreenHandler}  style={styles.addplanbutton}/>
+            </View>
+            
                 {/* amount of lession plans<Text>{ plans.length }</Text> */}
                 <FlatList 
                     data={plans}
@@ -59,8 +62,23 @@ const ListPlanScreen = props => {
                         />
                         )}
                 />
+            <View style={styles.end}></View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    end: {
+        borderBottomColor: 'white',
+        borderBottomWidth: 1
+    },
+    buttnPos: {
+        paddingRight: 3,
+        paddingTop: 3
+    },
+    addplanbutton: {
+        alignSelf: 'flex-end',
+    }
+});
 
 export default ListPlanScreen;

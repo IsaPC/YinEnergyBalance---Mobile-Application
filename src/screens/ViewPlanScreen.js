@@ -32,8 +32,6 @@ const ViewPlanScreen = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: "center",
-        alignSelf: 'center'
     },
     image: {
         width: 250, height: 250,
