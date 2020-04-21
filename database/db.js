@@ -8,7 +8,7 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('yin.db');
 
-// place all initiation for the database here
+
 
 export const init = async () => {
 
