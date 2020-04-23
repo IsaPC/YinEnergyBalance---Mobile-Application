@@ -16,14 +16,14 @@ const ViewPlanScreen = props => {
 
     return (
         <ScrollView>
-            <View>
+            <View style={styles.imageContainer}>
                 <Image style={styles.image} source={{uri: imageUri}} />
             </View>
-            <View>
-                <Text>{planTitle}</Text>
+            <View style={styles.titleContainer}>
+                <Text style={styles.titleinput}>{planTitle}</Text>
             </View>
-            <View>
-                <Text>{description}</Text>
+            <View style={styles.descriptionContainer}>
+                <Text style={styles.descInput}>{description}</Text>
             </View>
         </ScrollView>
     );
@@ -33,11 +33,33 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
     },
+    imageContainer: {
+        alignSelf: 'center',
+        paddingTop: 5
+    },
     image: {
-        width: 250, height: 250,
-        borderRadius: 250,
-        backgroundColor: 'purple'
-    }
+        width: 350, height: 350,
+        borderRadius: 350,
+        backgroundColor: 'purple',
+    },
+    titleContainer: {
+        padding: 5,
+        margin: 5,
+        alignSelf: 'center'
+    },
+        titleinput: {
+            fontSize: 27,
+            padding: 5,
+        },
+    descriptionContainer: {
+        padding: 5,
+        margin: 5,
+        borderRadius: 6,
+    },
+    descInput: {
+        fontSize: 24,
+        padding: 10
+    },
 });
 
 export default ViewPlanScreen;

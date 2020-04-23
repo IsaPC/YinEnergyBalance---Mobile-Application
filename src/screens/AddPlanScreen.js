@@ -76,7 +76,7 @@ const AddPlanScreen = props => {
 
                 <View style={styles.titleContainer}>
                     <TextInput
-                        placeholder='Input title'
+                        placeholder='Input Title:'
                         placeholderTextColor="grey"
                         style={styles.titleinput}
                         onChangeText={titleChangeHandler} 
@@ -86,9 +86,9 @@ const AddPlanScreen = props => {
 
                 <View style={styles.descriptionContainer}>
                     <TextInput  
-                        placeholder='description' placeholderTextColor="grey"
+                        placeholder='description:' 
+                        placeholderTextColor="grey"
                         multiline
-                        placeholderTextColor='black'
                         style={styles.descInput}
                         onChangeText={descChangeHandler} 
                         value={descValue}    
@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
         flexDirection:  'column',
         justifyContent: 'space-between',
         backgroundColor: 'white',
+        width: "100%",
+        height: "100%"
     },
     titleContainer: {
         borderColor: 'black',
@@ -126,7 +128,6 @@ const styles = StyleSheet.create({
         titleinput: {
             fontSize: 27,
             padding: 5,
-            
         },
     descriptionContainer: {
         borderColor: 'black',

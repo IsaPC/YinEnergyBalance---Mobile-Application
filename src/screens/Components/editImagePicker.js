@@ -71,8 +71,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: "center",
         paddingRight: 50,
+        paddingTop: 5,
         margin: 0,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: "center",
     },
     // image
     styledimage: {
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
         height: 580*0.2,
         width: 497*0.2,
         paddingHorizontal: 10,
-        backgroundColor: 'green',
+        // backgroundColor: 'green',
         alignItems: "center",
         justifyContent: "center",
     },

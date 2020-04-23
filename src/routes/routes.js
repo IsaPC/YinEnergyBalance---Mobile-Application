@@ -49,16 +49,57 @@ const Routes = props => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={DrawerNavigtator} />
+                <Stack.Screen 
+                    name="Home"
+                    component={DrawerNavigtator}
+                    options={{
+                        title: "Yin Energy Balance",
+                        headerStyle: {
+                            backgroundColor: "rgb(108, 184, 58)",
+                        },
+                        headerTintColor: "#fff",
+                        headerTitleAlign: "center"
+                    }} 
+                />
 
                 {/* plans */}
                 <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
-                <Stack.Screen name="Add Plan" component={AddPlan} />
-                <Stack.Screen name="View Plan" component={ViewPlan} />
-                <Stack.Screen name="Edit Plan" component={EditPlan} />
+
+                <Stack.Screen name="Add Plan" component={AddPlan}
+                    options={{
+                    title: "Yin Energy Balance",
+                    headerStyle: {
+                        backgroundColor: "rgb(108, 184, 58)",
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleAlign: "center"
+                    }} 
+                />
+                <Stack.Screen name="View Plan" component={ViewPlan}
+                    options={{
+                        title: "Yin Energy Balance",
+                        headerStyle: {
+                            backgroundColor: "rgb(108, 184, 58)",
+                        },
+                        headerTintColor: "#fff",
+                        headerTitleAlign: "center"
+                    }} 
+                />
+                <Stack.Screen name="Edit Plan" component={EditPlan}
+                    options={{
+                        title: "Yin Energy Balance",
+                        headerStyle: {
+                            backgroundColor: "rgb(108, 184, 58)",
+                        },
+                        headerTintColor: "#fff",
+                        headerTitleAlign: "center"
+                    }} 
+                />
 
                 {/* calandar/ session creator */}
-                <Stack.Screen name="Calendar" component={DrawerNavigtator} />
+                <Stack.Screen name="Calendar" component={DrawerNavigtator}
+                
+                />
 
             </Stack.Navigator>
         </NavigationContainer>

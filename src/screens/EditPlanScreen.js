@@ -73,6 +73,7 @@ const EditPlanScreen = props => {
 
     const deletePlanHandler = () => {
         console.log('delete plan: ' + titleValue);
+        console.log(imageValueUri, imageUri);
         removePlan(planId, imageValueUri);
         props.navigation.goBack();
     }
@@ -83,15 +84,18 @@ const EditPlanScreen = props => {
             <ImgPicker onImageTaken={imageTakenHandler} oldImage={imageUri}/>
             </View>
 
+        <View style={styles.containTitle}>
             <TextInput
-                style={{}}
-                onChangeText={titleChangeHandler} 
-                value={titleValue}
+                    style={styles.titleinput}
+                    onChangeText={titleChangeHandler} 
+                    value={titleValue}
             />
+        </View>
+            
 
             <TextInput  
                 multiline
-                style={{}}
+                style={styles.descriptioninput}
                 onChangeText={descChangeHandler} 
                 value={descValue}    
             />
@@ -115,7 +119,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignSelf: 'center'
-    }
+    },
+    containTitle: {
+        paddingLeft:115
+    },
+        titleinput: {
+            fontSize: 27,
+            padding: 5,
+        },
+    descriptionContainer: {
+        padding: 5
+    },
+        descriptioninput: {
+            fontSize: 24,
+        }
 });
 
 export default EditPlanScreen;
