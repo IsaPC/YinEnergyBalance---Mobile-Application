@@ -37,7 +37,7 @@ const PlanContextProvider = props => {
             ));
             // https://stackoverflow.com/questions/19529403/javascript-loop-through-object-array
 
-            console.log(tempArray);
+            // console.log(tempArray);
             setPlans(tempArray);
 
             setBool(false);
@@ -46,42 +46,46 @@ const PlanContextProvider = props => {
     }; // END
 
     const addPlan = async (title, imageUri, description) => {
-
-        //turn image link frpm temp localtion to local location
-        const fileName = imageUri.split('/').pop();
-        const newPath = FileSystem.documentDirectory + fileName;
-
-        //store image to local file system
-        await FileSystem.moveAsync({
-            from: imageUri,
-            to: newPath
-        });
-        const dbResult = await insertPlan(title, newPath, description);
-
-        console.log('what is in the database:');
-        console.log(dbResult);
-        
-
-        console.log('\nattempting to add plan in context');
         try {
+            //turn image link frpm temp localtion to local location
+            const fileName = imageUri.split('/').pop();
+            const newPath = FileSystem.documentDirectory + fileName;
+
+            //store image to local file system
+            await FileSystem.moveAsync({
+                from: imageUri,
+                to: newPath
+            });
+            //insert data into database
+            const dbResult = await insertPlan(title, newPath, description);
+
+            //log database
+            console.log('what is in the database:');
+            // console.log(dbResult);
+            
+            // insert data into state
+            console.log('\nattempting to add plan in context');
             setPlans([...plans, {id: dbResult.insertId.toString() , title, imageUri, description}]);
         } catch (error) {
             console.log('\nError, failed to load into stateHook, setPlans:')
             console.log(error);
             console.log('\n');
         }
-        
     }; // END
 
     const removePlan = async (id, imageUri) => {
+        try {
+            // delete image from file system
+            await FileSystem.deleteAsync(imageUri);
 
-        // delete image from file system
-        await FileSystem.deleteAsync(imageUri);
+            // delete from database
+            await deletePlan(id); 
 
-        // delete from database
-        await deletePlan(id);
-
-        setPlans(plans.filter(plan => plan.id !== id));
+            // remove from state hook
+            setPlans(plans.filter(plan => plan.id !== id));
+        } catch (error) {
+            console.log(error);
+        }
     }; // END
 
     const editPlan = async (id, title, oldImage , imageUri, description) => {
@@ -117,10 +121,6 @@ const PlanContextProvider = props => {
             setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: newPath, description: description} : item ));
             console.log('completed editing plan in context');
         } // END IF
-
-
-
-        
     } // END
 
 

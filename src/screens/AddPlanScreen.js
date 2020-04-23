@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import {StyleSheet, View, TextInput, Button, Alert, ScrollView } from 'react-native';
 
 //import context
 import { PlanContext } from '../contexts/PlanContext';
@@ -70,40 +70,84 @@ const AddPlanScreen = props => {
     ///
 
     return (
-        <View style={styles.screen}>
-            <ImagePicker onImageTaken={imageTakenHandler} />
+        <ScrollView>
+            <View style={styles.screen}>
+                <ImagePicker onImageTaken={imageTakenHandler} />
 
-            <TextInput
-                placeholder='Input title' placeholderTextColor="grey"
-                placeholderTextColor='black'
-                style={{}}
-                onChangeText={titleChangeHandler} 
-                value={titleValue}
-            />
+                <View style={styles.titleContainer}>
+                    <TextInput
+                        placeholder='Input title'
+                        placeholderTextColor="grey"
+                        style={styles.titleinput}
+                        onChangeText={titleChangeHandler} 
+                        value={titleValue}
+                    />
+                </View>
 
-            <TextInput  
-                placeholder='description' placeholderTextColor="grey"
-                multiline
-                placeholderTextColor='black'
-                style={{}}
-                onChangeText={descChangeHandler} 
-                value={descValue}    
-            />
+                <View style={styles.descriptionContainer}>
+                    <TextInput  
+                        placeholder='description' placeholderTextColor="grey"
+                        multiline
+                        placeholderTextColor='black'
+                        style={styles.descInput}
+                        onChangeText={descChangeHandler} 
+                        value={descValue}    
+                    />
+                </View>
 
-            <Button
-                onPress={SavePlanHandler}
-                title="Save"
-                color="rgb(0, 222, 7)"
-            />
-        </View>
+                <View style={styles.saveButton}>
+                    <Button
+                        onPress={SavePlanHandler}
+                        title="Save"
+                        color="rgb(0, 222, 7)"
+                    />
+                </View>
+            </View>
+
+        </ScrollView>  
     );
 }
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: "center",
-        alignSelf: 'center'
+        flexDirection:  'column',
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+    },
+    titleContainer: {
+        borderColor: 'black',
+        borderWidth: 1,
+        backgroundColor: '#EEEEEE',
+        padding: 5,
+        margin: 5,
+        borderRadius: 6,
+    },
+        titleinput: {
+            fontSize: 27,
+            padding: 5,
+            
+        },
+    descriptionContainer: {
+        borderColor: 'black',
+        borderWidth: 1,
+        backgroundColor: '#EEEEEE',
+        padding: 5,
+        margin: 5,
+        borderRadius: 6,
+        
+    },
+        descInput: {
+            fontSize: 24,
+            padding: 10
+        },
+    saveButton: {
+
+        alignSelf: 'flex-end',
+        padding: 10,
+        position: 'relative',
+        bottom: 0,
+        alignSelf: "center"
     }
 });
 

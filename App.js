@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 
-//import context
+//import contexts
 import PlandContextProvider from './src/contexts/PlanContext';
+import CalandContextProvider from './src/contexts/CalendarContext';
 
 // routes
 import Routes from './src/routes/routes';
@@ -20,10 +21,13 @@ init();
 function App() {
 
   return (
-    <PlandContextProvider>
-        <Routes />
-    </PlandContextProvider>
-        
+    /* nest contexts */
+    <CalandContextProvider>
+        <PlandContextProvider>
+            {/* go to routes */}
+            <Routes />
+        </PlandContextProvider>
+    </CalandContextProvider>
   );
 }
 

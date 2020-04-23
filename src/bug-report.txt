@@ -1,12 +1,15 @@
+bugs:
 tested on android 8.1.0 dev simulation on android studio
 plans:
     - image does not save after giving permissions
-        TEMP FIX: mititgation photo, close cammera and re-open - fixes the problem   
+        TEMP FIX: mititgation photo, close cammera and re-open - fixes the problem, - problem seems to only occour on pixel 2 emulator.   
     - list scrolling does not scroll to the bottem properly
 
     - removeing plan, then editing onther plan gives error - FIX NEEDED
 
+
+
+FIXED bugs:
 calender:
-    - setting another time, reflects the wrong time - FIX NEEDED
-
-
+    - setting another time, reflects the wrong time
+        fix: set to local time, instead of utc 

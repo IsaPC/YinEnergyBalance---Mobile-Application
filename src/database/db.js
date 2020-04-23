@@ -17,11 +17,18 @@ export const init = async () => {
         console.log(err);
     }); 
 
+    CreateEvents().then(() => {
+        console.log('Initialized events table');
+    }).catch(err => {
+        console.log('Initialized the table events failed');
+        console.log(err);
+    });
+
 }
 
-//----  plans  ---//
 
-//create table
+
+//create tables
 export const CreatePlans = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -40,8 +47,25 @@ export const CreatePlans = () => {
     return promise;
 };
 
+export const CreateEvents = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT NOT NULL, date TEXT NOT NULL);',
+                [],
+                () => {
+                resolve();
+                },
+                (_, err) => {
+                reject(err);
+                }
+            );
+        });
+    });
+    return promise;
+}
 
-
+//----  plans  ---//
 export const insertPlan = (title, imageUri, desc) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -124,4 +148,25 @@ export const deletePlan = (id) => {
         });
     });
     return promise;
-}
+};
+
+//----  events  ---//
+export const insertEvent = (title, date) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+          tx.executeSql(
+            'INSERT INTO events (title, date) VALUES (?,?);',
+            [title, date],
+            (_, result) => {
+                console.log('insert succeeded');
+                resolve(result);
+            },
+            (_, err) => {
+                console.log('insert failed');
+                console.log(err);
+                resolve(reject);
+            });
+        });
+    });
+    return promise;
+};
