@@ -4,6 +4,7 @@ import Header from '../shared/header';
 import Home from '../screens/home';
 import Register from '../screens/register';
 import Coach from '../screens/session';
+import ViewUser from '../screens/ViewUser';
 import { View } from 'react-native';
 
 
@@ -20,17 +21,25 @@ const screens = {
     },
     Register: {
       screen: Register,
-      navigationOptions: {
-          title: 'REGISTER',
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: () => <Header title='REGISTRATION' navigation={navigation} />       }
+          
           
       }
   }, 
-    Coach: {
-        screen: Coach,
-        navigationOptions: {
-            title: 'Session',
-        }
-    },
+  Coach: {
+    screen: Coach,
+    navigationOptions: {
+        title: 'Session Plans',
+    }
+  },
+  ViewUser: { 
+    screen: ViewUser,
+    navigationOptions: {
+      title: 'Users'
+    }
+  },
     
 
 };

@@ -1,6 +1,6 @@
-import React, {useState,createContext } from 'react';
+import React, {useState,createContext} from 'react';
 import * as FileSystem from 'expo-file-system';
-import { insertDetails, updateDetail, selectAllDetails, deleteDetails } from '../database/db';
+import { insertDetails, updateDetail, selectAllDetails, deleteDetail } from '../database/db';
 
 import Details from '../models/details';
 export const DetailsContext = createContext();
@@ -43,18 +43,25 @@ const DetailsContextProvider = (props) => {
             setDetails(tempArray);
             setBool(false);
         }
-    } // END
+    }; // END
 
-    const addUser = async (name, age, address, phone, email, notes) => {
+    const addDetails = async (name, age, address, phone, email, notes) => {
+
+        //turn name from temp location to local location
+        const fileName = name.split('/').pop();
+        const newPath = FileSystem.documentDirectory + fileName;
+        //store name to local file system
+        await FileSystem.moveAsync({
+            from: name,
+            to: newPath
+        });
+
         const dbResult = await insertDetails(name, age, address, phone, email, notes);
-
         console.log('what is in the database:');
-
         console.log(dbResult);
         console.log('\nattempting to add details in context');
 
         try {
-
             setDetails([...details, { id: dbResult.insertId.toString(), name, age, address, phone, email, notes }]);
 
         } catch (error) {
@@ -65,27 +72,33 @@ const DetailsContextProvider = (props) => {
 
             console.log('\n');
         }
-    }
+    };
 
-    const editPlan = async (id, title, oldImage, imageUri, description) => {
+    const removeDetails = async (id, name) => {
+        await FileSystem.deleteAsync(name);
+        await deleteDetail(id);
+        setDetails(details.filter(detail => detail.id !== id));
+    };
+
+    const editDetails = async (id, name, age, address, phone, email, notes) => {
 
 
 
-        if (oldImage === imageUri) {
+        if (oldName === name) {
 
             console.log('\n');
 
-            console.log('they are the same image');
+            console.log('they are the same name');
 
             console.log('\n');
 
 
 
-            await updatePlan(id, title, imageUri, description);
+            await updateDetail(id, name, age, address, phone, email, notes);
 
-            setPlans(plans.map(item => item.id === id ? { ...item, title: title, imageUri: newPath, description: description } : item));
+            setDetails(plans.map(item => item.id === id ? { ...item, name: newPath, age: age, address: address, phone: phone, email: email, notes: notes } : item));
 
-            console.log('completed editing plan in context');
+            console.log('completed editing details in context');
 
         } else {
 
@@ -101,11 +114,11 @@ const DetailsContextProvider = (props) => {
     
              */
 
-            await FileSystem.deleteAsync(oldImage);
+            await FileSystem.deleteAsync(oldName);
 
 
 
-            const fileName = imageUri.split('/').pop();
+            const fileName = name.split('/').pop();
 
             const newPath = FileSystem.documentDirectory + fileName;
 
@@ -115,7 +128,7 @@ const DetailsContextProvider = (props) => {
 
             await FileSystem.moveAsync({
 
-                from: imageUri,
+                from: name,
 
                 to: newPath
 
@@ -125,11 +138,11 @@ const DetailsContextProvider = (props) => {
 
             // insert into database
 
-            await updatePlan(id, title, newPath, description);
+            await updateDetail(id, name, age, address, phone, email, notes);
 
-            setPlans(plans.map(item => item.id === id ? { ...item, title: title, imageUri: newPath, description: description } : item));
+            setDetails(details.map(item => item.id === id ? { ...item, name: newPath, age: age, address: address, phone: phone, email: email, notes: notes } : item));
 
-            console.log('completed editing plan in context');
+            console.log('completed editing details in context');
 
         } // END IF
 
@@ -144,7 +157,7 @@ const DetailsContextProvider = (props) => {
     } // END
     return (
 
-        <DetailsContext.Provider value={{details, addUser, editPlan, loadAllDetails }}>
+        <DetailsContext.Provider value={{details, addDetails, removeDetails, editDetails, loadAllDetails }}>
     
             {props.children}
     

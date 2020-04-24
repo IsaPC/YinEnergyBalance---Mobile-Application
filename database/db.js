@@ -12,7 +12,7 @@ const db = SQLite.openDatabase('yin.db');
 
 export const init = async () => {
 
-    RegisterName().then(() => {
+    CreateDetails().then(() => {
 
         console.log('Name registered');
 

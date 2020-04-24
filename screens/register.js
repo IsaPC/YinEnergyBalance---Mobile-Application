@@ -1,64 +1,66 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { DetailsContext } from '../contexts/DetailsContext';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function Register({ navigation }) {
+const Register = props => {
 
-  const { addPlan } = useContext(DetailsContext);
+  const { addDetails } = useContext(DetailsContext);
 
-  const [Name, setName] = useState('');
-  const [Age, setAge] = useState('');
-  const [Address, setAddress] = useState('');
-  const [Phone, setPhone] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Note, setNote] = useState('');
+  const [nameValue, setNameValue] = useState('');
+  const [ageValue, setAgeValue] = useState('');
+  const [addressValue, setAddressValue] = useState('');
+  const [phoneValue, setPhoneValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [noteValue, setNoteValue] = useState('');
 
-  const NameChangeHandler = txtName => {
+  const nameChangeHandler = namePath => {
     //could add title validation
-    setName(txtName);
+    setNameValue(namePath);
   }
 
-  const AgeChangeHandler = txtAge => {
+  const ageChangeHandler = ageText => {
     //could add title validation
-    setAge(txtAge);
+    setAgeValue(ageText);
 
   }
-  const AddressChangeHandler = txtAddress => {
+  const addressChangeHandler = addressText => {
     //could add title validation
-    setAddress(txtAddress);
+    setAddressValue(addressText);
 
   }
-  const PhoneChangeHandler = txtPhone => {
+  const phoneChangeHandler = phoneText => {
     //could add title validation
-    setPhone(txtPhone);
+    setPhoneValue(phoneText);
   }
-  const EmailChangeHandler = txtEmail => {
+  const emailChangeHandler = emailText => {
     //could add title validation
-    setEmail(txtEmail);
-
+    setEmailValue(emailText);
   }
-  const NoteChangeHandler = txtNote => {
+  const noteChangeHandler = noteText => {
     //could add title validation
-    setNote(txtNote);
+    setNoteValue(noteText);
   }
   const RegisterUserHandler = () => {
-    // check that thier is content
-    if (Name.length === 0 || !Name) {
-      console.log("\nTitle has not been inputted\n");
-      Alert.alert("Error", "Title is empty!", [
+    // check that there is content
+    if (nameValue.length === 0 || !nameValue) {
+      console.log("\nName has not been inputted\n");
+      Alert.alert("Error", "Name is empty!", [
         { text: 'Ok', onPress: () => console.log('alert closed') }
       ]);
     }
     else {
 
-      console.log('\n\nclicked on save');
+      console.log('\n\nclicked on Register');
       console.log('values being saved: ');
-      console.log(titleValue);
-      console.log('going to "addPlan from context"\n\n');
+      console.log('Name :',nameValue,'Age:', ageValue, 'Address:',addressValue, 'Phone:', phoneValue, emailValue, noteValue );
+      console.log('going to "addUser from context"\n\n');
 
       // add item to context hook
-      //addPlan(Name, Age, Address, Phone, Email, Note);
+      addDetails(nameValue, ageValue, addressValue, phoneValue, emailValue, noteValue);
+      props.navigation.goBack();
+      
     }
   }
   return (
@@ -68,25 +70,26 @@ export default function Register({ navigation }) {
       <View style={globalStyles.register}>
 
         <TextInput style={globalStyles.textIn} placeholder="Full Name"
-          underlineColorAndroid={'transparent'} onChangeText={NameChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={nameChangeHandler} />
 
         <TextInput style={globalStyles.textIn} placeholder="Age"
-          underlineColorAndroid={'transparent'} onChangeText={AgeChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={ageChangeHandler} />
 
         <TextInput style={globalStyles.textIn} placeholder="Address"
-          underlineColorAndroid={'transparent'} onChangeText={AddressChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={addressChangeHandler} />
 
         <TextInput style={globalStyles.textIn} placeholder="Phone"
-          underlineColorAndroid={'transparent'} onChangeText={PhoneChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={phoneChangeHandler} />
 
         <TextInput style={globalStyles.textIn} placeholder="Email"
-          underlineColorAndroid={'transparent'} onChangeText={EmailChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={emailChangeHandler} />
 
         <TextInput style={globalStyles.textBux} placeholder="Please specify if you would like me to know"
-          underlineColorAndroid={'transparent'} onChangeText={NoteChangeHandler} />
+          underlineColorAndroid={'transparent'} onChangeText={noteChangeHandler} />
 
         <Button style={globalStyles.Butt} title='Register' onPress={RegisterUserHandler} />
       </View>
     </View>
   );
 }
+export default Register;

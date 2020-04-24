@@ -1,4 +1,4 @@
-class Details {
+class Detail {
 
     constructor(name, age, address, phone, email, notes) {
 
@@ -22,4 +22,4 @@ class Details {
 
 
 
-export default Details;
+export default Detail;

@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import * as Font from 'expo-font'
 import Home from './screens/home';
 import { AppLoading } from 'expo';
 import Navigator from './routes/drawer';
+import DetailsContextProvider from './contexts/DetailsContext';
+import Register from './screens/register';
+import { init } from './database/db';
+
+init();
 
 const getFonts = () => Font.loadAsync({
   'Nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
@@ -14,7 +19,11 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      <Navigator />
+      
+      <DetailsContextProvider>
+        <Navigator />
+          
+      </DetailsContextProvider>     
     );
   } else {
     return (
@@ -25,5 +34,4 @@ export default function App() {
     )
   }
 }
-
 
