@@ -1,74 +1,62 @@
-import React from 'react';
-import {StyleSheet, ScrollView, Image, View, Text} from 'react-native';
-
+import React, { useState, useContext } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
+import { DetailsContext } from '../contexts/DetailsContext';
+import User from './Components/users';
+import { ScrollView } from 'react-native-gesture-handler';
 // navigation guide https://reactnavigation.org/docs/params/
 
 const ViewUser = props => {
-
-    // route id here
-    const { detailsId, detailsName, age, address, phone, email, notes, } = props.route.params;
-
-    // select the id from redux from db
-    // const selectedPlan = useSelector(state =>
-    //     state.plans.plans.find(plan => plan.id.toString() === planId.toString())
-    //     );
-
-
+   const {details,loadAllDetails,removeUsers} = useContext(DetailsContext);
+   loadAllDetails();    
+    const addUserHandler = () => {
+        console.log('add-user button clicked');
+        //props.navigation.navigate();
+    }
     return (
-        <ScrollView>
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleinput}>{detailsName}</Text>
+    <ScrollView>
+        <View>
+            <View style={styles.buttnPos}>
             </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleinput}>{age}</Text>
-            </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleinput}>{address}</Text>
-            </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleinput}>{phone}</Text>
-            </View>
-            <View style={styles.descriptionContainer}>
-                <Text style={styles.descInput}>{email}</Text>
-            </View>
-            <View style={styles.descriptionContainer}>
-                <Text style={styles.descInput}>{notes}</Text>
-            </View>
-        </ScrollView>
+            <FlatList
+                data={details}
+                keyExtractor={item => item.id}
+                renderItem={itemData => (
+                    <User
+                        name={itemData.item.name}
+                        age={itemData.item.age}
+                        address={itemData.item.address}
+                        onEditPlan={() => {
+                            console.log('edit user button');
+                            props.navigation.navigate('EditUser', {
+                                userid: itemData.item.id,
+                                username: itemData.item.name,
+                                useraddress: itemData.item.address,
+                                userage: itemData.item.age,
+                            });
+                        }}
+                        OnDelete={() => {
+                            removeUsers(itemData.item.id);
+                        }}
+                    />
+                )} />
+            <View style={styles.end}></View>
+        </View>
+    </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
+    end: {
+        borderBottomColor: 'white',
+        borderBottomWidth: 1
     },
-    imageContainer: {
-        alignSelf: 'center',
-        paddingTop: 5
+    buttnPos: {
+        paddingRight: 3,
+        paddingTop: 3
     },
-    image: {
-        width: 350, height: 350,
-        borderRadius: 350,
-        backgroundColor: 'purple',
-    },
-    titleContainer: {
-        padding: 5,
-        margin: 5,
-        alignSelf: 'center'
-    },
-        titleinput: {
-            fontSize: 27,
-            padding: 5,
-        },
-    descriptionContainer: {
-        padding: 5,
-        margin: 5,
-        borderRadius: 6,
-    },
-    descInput: {
-        fontSize: 24,
-        padding: 10
-    },
+    addplanbutton: {
+        alignSelf: 'flex-end',
+    }
 });
 
 export default ViewUser;

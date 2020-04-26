@@ -1,6 +1,6 @@
 class Detail {
 
-    constructor(name, age, address, phone, email, notes) {
+    constructor(id,name, age, address, phone, email, notes) {
 
         this.id = id;
 

@@ -8,7 +8,6 @@ import Register from './screens/register';
 import { init } from './database/db';
 
 init();
-
 const getFonts = () => Font.loadAsync({
   'Nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
   'Nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
@@ -19,10 +18,8 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      
       <DetailsContextProvider>
         <Navigator />
-          
       </DetailsContextProvider>     
     );
   } else {

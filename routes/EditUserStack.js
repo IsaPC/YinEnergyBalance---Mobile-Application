@@ -1,20 +1,19 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import register from '../screens/register';
+import editUser from '../screens/edit';
 import React from 'react';
 import Header from '../shared/header';
 
 const screens = {
     register: {
-      screen: register,
+      screen: editUser,
       navigationOptions: {
-         title: 'Register User'
+         title: 'Edit User'
       }
     }  
-       
 };
 
 // home stack navigator screens
-const registerStack = createStackNavigator(screens, {
+const editUserStack = createStackNavigator(screens, {
 defaultNavigationOptions: {
   headerStyle: {backgroundColor:'lightgreen'}
 }
@@ -22,4 +21,4 @@ defaultNavigationOptions: {
 
 //for all the screens, can do: headerStyle: {backgroundColor:'lightgreen'}
 
-export default registerStack;
+export default editUserStack;

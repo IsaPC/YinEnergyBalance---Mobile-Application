@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import * as SQLite from 'expo-sqlite';
-
+import {AsyncStorage} from 'react-native';
 
 
 
@@ -13,7 +13,7 @@ const db = SQLite.openDatabase('yin.db');
 export const init = async () => {
 
     CreateDetails().then(() => {
-
+        
         console.log('Name registered');
 
     }).catch(err => {
@@ -22,7 +22,7 @@ export const init = async () => {
 
         console.log(err);
 
-    }); 
+    });
 
 
 
@@ -50,13 +50,13 @@ export const CreateDetails = () => {
 
                 () => {
 
-                resolve();
+                    resolve();
 
                 },
 
                 (_, err) => {
 
-                reject(err);
+                    reject(err);
 
                 }
 
@@ -82,29 +82,29 @@ export const insertDetails = (name, age, address, phone, email, notes) => {
 
         db.transaction(tx => {
 
-          tx.executeSql(
+            tx.executeSql(
 
-            'INSERT INTO details (name, age, address, phone, email, notes) VALUES (?,?,?,?,?,?);',
+                'INSERT INTO details (name, age, address, phone, email, notes) VALUES (?,?,?,?,?,?);',
 
-            [name, age, address, phone, email, notes],
+                [name, age, address, phone, email, notes],
 
-            (_, result) => {
+                (_, result) => {
 
-                console.log('insert succeeded');
+                    console.log('insert succeeded');
 
-                resolve(result);
+                    resolve(result);
 
-            },
+                },
 
-            (_, err) => {
+                (_, err) => {
 
-                console.log('insert failed');
+                    console.log('insert failed');
 
-                console.log(err);
+                    console.log(err);
 
-                resolve(reject);
+                    resolve(reject);
 
-            });
+                });
 
         });
 
@@ -118,38 +118,30 @@ export const insertDetails = (name, age, address, phone, email, notes) => {
 export const selectAllDetails = () => {
 
     const promise = new Promise((resolve, reject) => {
-
         db.transaction(tx => {
-
             tx.executeSql(
+                'SELECT * FROM details',
+                [],
+                (_, result) => {
+                    console.log('show records');
+                    console.log(result);
+                    resolve(result);
+                },
+                (_, err) => {
+                    console.log('catch');
+                    console.log(err);
+                    reject(err);
 
-            'SELECT * FROM details',
-
-            [],
-
-            (_, result) => {
-
-                resolve(result);
-
-            },
-
-            (_, err) => {
-
-                reject(err);
-
-            });
-
+                });
         });
-
     });
-
     return promise;
 
 }
 
-    
 
-    
+
+
 
 
 
@@ -159,23 +151,23 @@ export const updateDetail = (id, name, age, address, phone, email, notes) => {
 
         db.transaction(tx => {
 
-          tx.executeSql(
+            tx.executeSql(
 
-            'UPDATE details SET name=?, age=?, address=?, phone=?, email=?, notes=? WHERE id=?;',
+                'UPDATE details SET name=?, age=?, address=?, phone=?, email=?, notes=? WHERE id=?;',
 
-            [name, age, address, phone, email, notes, id],
+                [name, age, address, phone, email, notes, id],
 
-            (_, result) => {
+                (_, result) => {
 
-              resolve(result);
+                    resolve(result);
 
-            },
+                },
 
-            (_, err) => {
+                (_, err) => {
 
-              reject(err);
+                    reject(err);
 
-            });
+                });
 
         });
 
@@ -189,25 +181,25 @@ export const updateDetail = (id, name, age, address, phone, email, notes) => {
 
 export const deleteDetails = (id) => {
 
-    const promise = new Promise((resolve, reject) => { 
+    const promise = new Promise((resolve, reject) => {
 
         db.transaction(tx => {
 
             tx.executeSql('DELETE FROM details WHERE id = ?;',
 
-            [id],
+                [id],
 
-            (_, result) => {
+                (_, result) => {
 
-             resolve(result);
+                    resolve(result);
 
-            },
+                },
 
-            (_, err) => {
+                (_, err) => {
 
-                reject(err);
+                    reject(err);
 
-            });
+                });
 
         });
 

@@ -4,52 +4,51 @@ import Header from '../shared/header';
 import Home from '../screens/home';
 import Register from '../screens/register';
 import Coach from '../screens/session';
-import ViewUser from '../screens/ViewUser';
+import listUser from '../screens/ViewUser';
+import EditUser from '../screens/edit';
 import { View } from 'react-native';
 
 
 const screens = {
-  
-    Home: {
-      screen: Home,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerTitle: () => <Header title='Home' navigation={navigation} />
-        }
-          
+  Home: {
+    screen: Home,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header title='Home' navigation={navigation} />
       }
-    },
-    Register: {
-      screen: Register,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerTitle: () => <Header title='REGISTRATION' navigation={navigation} />       }
-          
-          
-      }
-  }, 
-  Coach: {
-    screen: Coach,
-    navigationOptions: {
-        title: 'Session Plans',
     }
   },
-  ViewUser: { 
-    screen: ViewUser,
+  Register: {
+    screen: Register,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header title='REGISTRATION' navigation={navigation} />
+      }
+    }
+  },
+  ViewUser: {
+    screen: listUser,
     navigationOptions: {
       title: 'Users'
     }
   },
-    
-
+  Coach: {
+    screen: Coach,
+    navigationOptions: {
+      title: 'Session Plans',
+    }
+  },
+  EditUser:{
+    screen:EditUser,
+  },
 };
 
 // home stack navigator screens
 const HomeStack = createStackNavigator(screens, {
-defaultNavigationOptions: {
-    headerStyle: {backgroundColor:'lightgreen'}
+  defaultNavigationOptions: {
+    headerStyle: { backgroundColor: 'lightgreen' }
 
-}
-}); 
+  }
+});
 
 export default HomeStack;

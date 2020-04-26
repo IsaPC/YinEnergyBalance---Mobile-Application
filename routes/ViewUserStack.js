@@ -1,6 +1,6 @@
-import { createStackNavigator } from 'react-navigation-stack';
-import ViewUser from '../screens/ViewUser';
 import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import ViewUser from '../screens/session';
 import Header from '../shared/header';
 
 const screens = {

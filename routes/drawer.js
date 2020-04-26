@@ -5,7 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import HomeStack from './homeStack';
 import sessionStack from './sessionStack';
 import registerStack from './registerStack';
-import ViewUserStack from './ViewUserStack'
+import ViewUserStack from './ViewUserStack';
 // drawer navigation options
 const RootDrawerNavigator = createDrawerNavigator({
   Home: {
@@ -14,12 +14,12 @@ const RootDrawerNavigator = createDrawerNavigator({
   Coach: {
     screen: sessionStack,
   },
-  Register:{
+  Register: {
     screen: registerStack,
   },
-  ViewUser:{
+  ViewUser: {
     screen: ViewUserStack,
-  }
+  },
 });
 
 export default createAppContainer(RootDrawerNavigator);
