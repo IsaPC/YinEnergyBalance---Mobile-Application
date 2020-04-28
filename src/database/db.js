@@ -1,34 +1,38 @@
-import React, { useContext } from 'react';
 import * as SQLite from 'expo-sqlite';
 
-
+//connect to the database
 const db = SQLite.openDatabase('yin.db');
 
 // place all initiation for the database here
 export const init = async () => {
-    //create tables if not exists plans
     //TODO create tables if not exists sessions
-    //TODO create tables if not exists register
 
+    // Isaac - create tables
     CreatePlans().then(() => {
-        console.log('Initialized plans table');
+        console.log('\nInitialized plans table');
     }).catch(err => {
         console.log('Initialized the table plans failed');
         console.log(err);
     }); 
 
     CreateEvents().then(() => {
-        console.log('Initialized events table');
+        console.log('\nInitialized events table');
     }).catch(err => {
         console.log('Initialized the table events failed');
         console.log(err);
     });
 
-}
+    // Aashish - create tables
+    CreateDetails().then(() => {
+        console.log('\nInitialized details table');
+    }).catch(err => {
+        console.log('Initialized the table events failed');
+        console.log(err);
+    });
+}; // END init
 
 
-
-//create tables
+//create tables -Isaac
 export const CreatePlans = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -47,6 +51,7 @@ export const CreatePlans = () => {
     return promise;
 };
 
+
 export const CreateEvents = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -63,9 +68,29 @@ export const CreateEvents = () => {
         });
     });
     return promise;
-}
+};
 
-//----  plans  ---//
+
+// create tables - Aashish
+export const CreateDetails = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'CREATE TABLE IF NOT EXISTS details (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL, age TEXT NOT NULL,address TEXT NOT NULL,phone TEXT NOT NULL,email TEXT NOT NULL, notes TEXT);',
+                [],
+                () => {
+                    resolve();
+                },
+                (_, err) => {
+                    reject(err);
+                }
+            );
+        });
+    });
+    return promise;
+}; // END
+
+//----  plans - Isaac  ---//
 export const insertPlan = (title, imageUri, desc) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -84,19 +109,8 @@ export const insertPlan = (title, imageUri, desc) => {
         });
     });
     return promise;
-};
+}; // END
 
-// export const selectAllPlans = () => {
-//     const promise = new Promise((resolve, reject) => {
-//     db.transaction(tx => {
-        
-//         tx.executeSql(
-//         'SELECT * FROM plans',
-//             [],
-//             (_, { rows: { _array } }) => {return _array});
-//         }
-        
-//     )}
 
 export const selectAllPlans = () => {
     const promise = new Promise((resolve, reject) => {
@@ -113,10 +127,9 @@ export const selectAllPlans = () => {
         });
     });
     return promise;
-}
+}; // END
     
     
-
 export const updatePlan = (id, title, imageUri , description) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -132,7 +145,8 @@ export const updatePlan = (id, title, imageUri , description) => {
         });
     });
     return promise;
-}
+}; // END
+
 
 export const deletePlan = (id) => {
     const promise = new Promise((resolve, reject) => { 
@@ -148,9 +162,10 @@ export const deletePlan = (id) => {
         });
     });
     return promise;
-};
+}; // END
 
-//----  events  ---//
+
+//----  events - Isaac  ---//
 export const insertEvent = (title, date) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -169,4 +184,83 @@ export const insertEvent = (title, date) => {
         });
     });
     return promise;
-};
+}; // END
+
+
+//----  details - Aashish  ---//
+export const insertDetails = (name, age, address, phone, email, notes) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'INSERT INTO details (name, age, address, phone, email, notes) VALUES (?,?,?,?,?,?);',
+                [name, age, address, phone, email, notes],
+                (_, result) => {
+                    console.log('insert succeeded');
+                    resolve(result);
+                },
+                (_, err) => {
+                    console.log('insert failed');
+                    console.log(err);
+                    resolve(reject);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+
+export const selectAllDetails = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'SELECT * FROM details',
+                [],
+                (_, result) => {
+                    console.log('show records');
+                    console.log(result);
+                    resolve(result);
+                },
+                (_, err) => {
+                    console.log('catch');
+                    console.log(err);
+                    reject(err);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+
+export const updateDetail = (id, name, age, address, phone, email, notes) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'UPDATE details SET name=?, age=?, address=?, phone=?, email=?, notes=? WHERE id=?;',
+                [name, age, address, phone, email, notes, id],
+                (_, result) => {
+                    resolve(result);
+                },
+                (_, err) => {
+                    reject(err);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+
+export const deleteDetails = (id) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql('DELETE FROM details WHERE id = ?;',
+                [id],
+                (_, result) => {
+                    resolve(result);
+                },
+                (_, err) => {
+                    reject(err);
+            });
+        });
+    });
+    return promise;
+}; // END

@@ -25,8 +25,8 @@ const PlanContextProvider = props => {
         if (bool) {
             console.log(bool)
             let dbresultSet = await selectAllPlans();
-            console.log('\nloading items from sql to state');
-            console.log('data being transfered: ')
+            //console.log('\nloading items from sql to state');
+            //console.log('data being transfered: ')
             //console.log(dbresultSet.rows._array)
 
             let tempArray = dbresultSet.rows._array.map(pl => new Plan(
