@@ -20,6 +20,9 @@ import ViewPlan from '../screens/ViewPlanScreen';
 import EditPlan from '../screens/EditPlanScreen';
 // calendar
 import CalendarScreen from '../screens/CalendarScreen';
+// register
+import RegisterScreen from '../screens/register';
+import ViewUserScreen from '../screens/ViewUser';
 
 
 // setup Navigations
@@ -32,6 +35,8 @@ const DrawerNavigtator = props => {
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Lession Plans" component={ListPlan} />
             <Drawer.Screen name="Calendar" component={CalendarScreen} />
+            <Drawer.Screen name="Register" component={RegisterScreen} />
+            <Drawer.Screen name="View customers" component={ViewUserScreen} />
         </Drawer.Navigator>
     );
 }
@@ -62,9 +67,13 @@ const Routes = props => {
                     }} 
                 />
 
-                {/* plans */}
+                {/* stacks to drawer */}
                 <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
+                <Stack.Screen name="Calendar" component={DrawerNavigtator} />
+                <Stack.Screen name="Register" component={DrawerNavigtator} />
+                <Stack.Screen name= "View users" component={DrawerNavigtator} />
 
+                {/* plain stacks */}
                 <Stack.Screen name="Add Plan" component={AddPlan}
                     options={{
                     title: "Yin Energy Balance",
@@ -96,10 +105,8 @@ const Routes = props => {
                     }} 
                 />
 
-                {/* calandar/ session creator */}
-                <Stack.Screen name="Calendar" component={DrawerNavigtator}
-                
-                />
+
+
 
             </Stack.Navigator>
         </NavigationContainer>
