@@ -25,7 +25,8 @@ const EditImgPicker = props => {
         return true;
     }
     
-    // CHECK PERMISSIONS AND SAVE IAMGE
+
+    // CHECK PERMISSIONS AND SAVE IMAGE
     const takeImageHandler = async () => {
         const hasPermission = await verifyPermissions();
         if (!hasPermission) {
@@ -33,6 +34,23 @@ const EditImgPicker = props => {
         }
         const image = await ImagePicker.launchCameraAsync({
             //allowsEditing: true, // TODO change from ImageEditor.cropImage() to expo ImageManipulator.
+            aspectRatio: [16, 9],
+            quality: 0.6,
+        });
+
+        setPickedImage(image.uri);
+        props.onImageTaken(image.uri);
+    }
+
+    // CHECK PERMISSIONS AND SAVE IMAGE FROM GALLERY
+    const galleryHandler = async () => {
+        const hasPermission = await verifyPermissions();
+        if (!hasPermission) {
+            return;
+        }
+
+        const image = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: false,
             aspectRatio: [16, 9],
             quality: 0.6,
         });
@@ -53,12 +71,21 @@ const EditImgPicker = props => {
                 
                 {/* TAKE IMAGE */}
 
-                <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
-                    <Image 
-                        source={require("../../../assets/Camera_Icon.png")} 
-                        style={styles.addphoto} 
-                    />
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
+                        <Image 
+                            source={require("../../../assets/Camera_Icon.png")} 
+                            style={styles.addphoto} 
+                        />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={galleryHandler} style={styles.galleryContainer}>
+                        <Image 
+                            source={require("../../../assets/Gallery.png")} 
+                            style={styles.addphoto} 
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
             
 
@@ -92,7 +119,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-
+    buttonContainer: {
+        flexDirection: "column",
+    },
     // gallery Image
     addphoto: {
         alignSelf: 'center',

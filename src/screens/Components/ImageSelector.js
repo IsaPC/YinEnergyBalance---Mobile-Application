@@ -41,6 +41,23 @@ const ImgPicker = props => {
         props.onImageTaken(image.uri);
     }
 
+    const galleryHandler = async () => {
+        const hasPermission = await verifyPermissions();
+        if (!hasPermission) {
+            return;
+        }
+
+        const image = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: false,
+            aspectRatio: [16, 9],
+            quality: 0.6,
+        });
+
+        setPickedImage(image.uri);
+        props.onImageTaken(image.uri);
+    }
+
+
     return (
         <View>
             {/* Preview Image */}
@@ -53,12 +70,22 @@ const ImgPicker = props => {
                 
                 {/* TAKE IMAGE */}
 
-                <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
-                    <Image 
-                        source={require("../../../assets/Camera_Icon.png")} 
-                        style={styles.addphoto} 
-                    />
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={takeImageHandler} style={styles.galleryContainer}>
+                        <Image 
+                            source={require("../../../assets/Camera_Icon.png")} 
+                            style={styles.addphoto} 
+                        />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={galleryHandler} style={styles.galleryContainer}>
+                        <Image 
+                            source={require("../../../assets/Gallery.png")} 
+                            style={styles.addphoto} 
+                        />
+                    </TouchableOpacity>
+                </View>
+               
             </View>
             
 
@@ -92,6 +119,9 @@ const styles = StyleSheet.create({
     },
 
     // gallery Image
+    buttonContainer: {
+        flexDirection: "column",
+    },
     addphoto: {
         alignSelf: 'center',
         width: 60,
