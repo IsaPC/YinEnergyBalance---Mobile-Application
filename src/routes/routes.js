@@ -23,7 +23,12 @@ import CalendarScreen from '../screens/CalendarScreen';
 // register
 import RegisterScreen from '../screens/register';
 import ViewUserScreen from '../screens/ViewUser';
-
+//sessions
+import Sessions from '../screens/Sessions';
+//coaching
+import CoachingScreen from '../screens/CoachingScreen';
+//notes
+import Notes from '../screens/Notes';
 
 // setup Navigations
 const Stack = createStackNavigator();
@@ -37,9 +42,17 @@ const DrawerNavigtator = props => {
             <Drawer.Screen name="Calendar" component={CalendarScreen} />
             <Drawer.Screen name="Register" component={RegisterScreen} />
             <Drawer.Screen name="View customers" component={ViewUserScreen} />
+            <Drawer.Screen name="Sessions" component={Sessions} />
+            <Drawer.Screen name="Coachings" component={CoachingScreen} />
+            <Drawer.Screen name="Add Notes" component={Notes} />
         </Drawer.Navigator>
     );
 }
+
+
+  
+  
+  
 
 
 
@@ -72,6 +85,10 @@ const Routes = props => {
                 <Stack.Screen name="Calendar" component={DrawerNavigtator} />
                 <Stack.Screen name="Register" component={DrawerNavigtator} />
                 <Stack.Screen name= "View users" component={DrawerNavigtator} />
+                <Stack.Screen name= "Sessions" component={DrawerNavigtator} />
+                <Stack.Screen name= "Coaching" component={DrawerNavigtator} />
+                <Stack.Screen name= "Notes" component={DrawerNavigtator} />
+                
 
                 {/* plain stacks */}
                 <Stack.Screen name="Add Plan" component={AddPlan}
@@ -104,6 +121,16 @@ const Routes = props => {
                         headerTitleAlign: "center"
                     }} 
                 />
+                <Stack.Screen name="Go to Notes" component={Notes}
+                    options={{
+                        title: "Yin Energy hey",
+                        headerStyle: {
+                            backgroundColor: "rgb(108, 184, 58)",
+                        },
+                        headerTintColor: "#fff",
+                        headerTitleAlign: "center"
+                    }} 
+                    />
 
 
 
