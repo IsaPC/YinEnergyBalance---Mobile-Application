@@ -1,3 +1,5 @@
+/* Screen created by Aashish */
+
 import React, { useState, useContext } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { DetailsContext } from '../contexts/DetailsContext';

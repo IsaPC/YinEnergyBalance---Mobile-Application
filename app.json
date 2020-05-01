@@ -28,11 +28,11 @@
     },
     "android": {
         "package": "com.yourcompany.yourappname",
-        "versionCode": 1
-      },
-      "permissions": [
-          "CAMERA",
-          "WRITE_EXTERNAL_STORAGE"
-        ]
+        "versionCode": 1,
+        "permissions": [
+            "CAMERA",
+            "WRITE_EXTERNAL_STORAGE"
+          ]
+      }
   }
 }

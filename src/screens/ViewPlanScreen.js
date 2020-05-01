@@ -1,3 +1,4 @@
+/* Screen created by Isaac */
 import React from 'react';
 import {StyleSheet, ScrollView, Image, View, Text} from 'react-native';
 

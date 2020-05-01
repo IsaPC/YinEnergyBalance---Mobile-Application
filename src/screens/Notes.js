@@ -1,3 +1,4 @@
+/* Screen created by Minh */
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View, FlatList, AsyncStorage, Button, TextInput, Keyboard, Platform } from "react-native";
 
@@ -118,7 +119,7 @@ class Notes extends Component {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#ccffe6",
+        backgroundColor: 'white',
         padding: viewPadding,
         paddingTop: 20
       },

@@ -1,3 +1,5 @@
+/* Screen created by Isaac */
+
 import React, { useState, useContext } from 'react';
 import {StyleSheet, View, TextInput, Button, Alert, ScrollView } from 'react-native';
 

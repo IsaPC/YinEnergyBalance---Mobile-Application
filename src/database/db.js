@@ -96,6 +96,8 @@ export const CreateDetails = () => {
     });
     return promise;
 };
+
+// create tables - Minh
 export const CreateNotes = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
