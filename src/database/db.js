@@ -29,6 +29,13 @@ export const init = async () => {
         console.log('Initialized the table events failed');
         console.log(err);
     });
+    //Minh - create tables
+    CreateDetails().then(() => {
+        console.log('\nInitialized notes table');
+    }).catch(err => {
+        console.log('Initialized the table notes failed');
+        console.log(err);
+    });
 }; // END init
 
 
@@ -88,6 +95,24 @@ export const CreateDetails = () => {
         });
     });
     return promise;
+};
+export const CreateNotes = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT NOT NULL, date TEXT NOT NULL);',
+                [],
+                () => {
+                resolve();
+                },
+                (_, err) => {
+                reject(err);
+                }
+            );
+        });
+    });
+    return promise;
+
 }; // END
 
 //----  plans - Isaac  ---//
@@ -184,7 +209,27 @@ export const insertEvent = (title, date) => {
         });
     });
     return promise;
-}; // END
+};
+    export const insertNotes = (desc) => {
+        const promise = new Promise((resolve, reject) => {
+            db.transaction(tx => {
+              tx.executeSql(
+                'INSERT INTO Notes (description) VALUES ?;',
+                [desc],
+                (_, result) => {
+                    console.log('addTask');
+                    resolve(result);
+                },
+                (_, err) => {
+                    console.log('insert failed');
+                    console.log(err);
+                    resolve(reject);
+                });
+            });
+        });
+        return promise;
+    };
+ // END
 
 
 //----  details - Aashish  ---//
