@@ -7,9 +7,13 @@ const userItem = props => {
         <View style={styles.userItems}>
             <TouchableOpacity style={styles.itemText}>
                 <View style={{ flexDirection: 'column' }}>
+                    <Text style={styles.name}>ID : {props.id} </Text>
                     <Text style={styles.name}>UserName : {props.name} </Text>
                     <Text style={styles.age}>Age: {props.age} </Text>
                     <Text style={styles.address}>Address: {props.address} </Text>
+                    <Text style={styles.phone}>Phone: {props.phone} </Text>
+                    <Text style={styles.email}>Email: {props.email} </Text>
+                    <Text style={styles.note}>Notes: {props.notes} </Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.edit} onPress={props.onEditPlan}>

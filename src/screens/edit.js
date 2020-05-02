@@ -6,15 +6,15 @@ import { DetailsContext } from '../contexts/DetailsContext';
 const Edit = props => {
 
     const { editDetails, removeDetails } = useContext(DetailsContext);
-    const { userid, username, useraddress, userage, otherParams } = props.route.params; // FIXED ERROR
+    const { userid, username, useraddress, userage, userphone, useremail, usernote } = props.route.params; // FIXED ERROR
 
     const [userId, SetUserId] = useState(userid);
     const [nameValue, setNameValue] = useState(username);
     const [ageValue, setAgeValue] = useState(userage);
     const [addressValue, setAddressValue] = useState(useraddress);
-    const [phoneValue, setPhoneValue] = useState('');
-    const [emailValue, setEmailValue] = useState('');
-    const [noteValue, setNoteValue] = useState('');
+    const [phoneValue, setPhoneValue] = useState(userphone);
+    const [emailValue, setEmailValue] = useState(useremail);
+    const [noteValue, setNoteValue] = useState(usernote);
 
     const nameChangeHandler = namePath => {
         //could add title validation
@@ -53,7 +53,7 @@ const Edit = props => {
         }
         else {
             console.log('\n\nclicked on Edit User Detail');
-            console.log('Name :', nameValue, 'Age:', ageValue, 'Address:', addressValue, 'Phone:', phoneValue, emailValue, noteValue);
+            console.log('Name :', nameValue, 'Age:', ageValue, 'Address:', addressValue, 'Phone:', phoneValue, 'Email:', emailValue, 'Note:', noteValue);
             editDetails(userId,nameValue, ageValue, addressValue, phoneValue, emailValue, noteValue);
             props.navigation.goBack();
         }
@@ -74,13 +74,13 @@ const Edit = props => {
                     underlineColorAndroid={'transparent'} onChangeText={addressChangeHandler} value={addressValue} />
 
                 <TextInput style={globalStyles.textIn} placeholder="Phone"
-                    underlineColorAndroid={'transparent'} onChangeText={phoneChangeHandler} />
+                    underlineColorAndroid={'transparent'} onChangeText={phoneChangeHandler} value={phoneValue} />
 
                 <TextInput style={globalStyles.textIn} placeholder="Email"
-                    underlineColorAndroid={'transparent'} onChangeText={emailChangeHandler} />
+                    underlineColorAndroid={'transparent'} onChangeText={emailChangeHandler} value={emailValue} />
 
-                <TextInput style={globalStyles.textBux} placeholder="Please specify if you would like me to know"
-                    underlineColorAndroid={'transparent'} onChangeText={noteChangeHandler} />
+                <TextInput style={globalStyles.textBux} placeholder="Please specify your health, physical conditions"
+                    underlineColorAndroid={'transparent'} onChangeText={noteChangeHandler} value={noteValue} />
 
                 <Button style={globalStyles.Butt} title='Update User Details' onPress={UpdateUserInfoHandler} />
             </View>

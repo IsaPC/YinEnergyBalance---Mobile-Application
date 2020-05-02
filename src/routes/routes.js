@@ -11,7 +11,7 @@ import {PlanContext} from '../contexts/PlanContext';
 
 ///--- Import Screens
 import Home from '../screens/Home';
-
+import Header from '../shared/header';
 // plans
 import ListPlan from '../screens/ListPlansScreen';
 import AddPlan from '../screens/AddPlanScreen';
@@ -30,6 +30,7 @@ import EditScreen from '../screens/edit';
 import Sessions from '../screens/Sessions';
 import CoachingScreen from '../screens/CoachingScreen';
 import Notes from '../screens/Notes';
+//import Header from '../../shared/header';
 ///---///
 
 // setup Navigations
@@ -56,13 +57,14 @@ const MainStack = props => {
     return (
         <Stack.Navigator initialRouteName="Home"
             screenOptions={{
-                title: "Yin Energy Balance",
+                title:"Yin-Energy Balance",
                 headerStyle: {
                     backgroundColor: "rgb(108, 184, 58)",
                 },
                 headerTintColor: "#fff",
                 headerTitleAlign: "center",
                 headerLeft: () => {}
+                
                 }} 
         >
 
