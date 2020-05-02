@@ -9,26 +9,28 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 //context
 import {PlanContext} from '../contexts/PlanContext';
 
-// Import Screens
+///--- Import Screens
 import Home from '../screens/Home';
 
-/// import components
 // plans
 import ListPlan from '../screens/ListPlansScreen';
 import AddPlan from '../screens/AddPlanScreen';
 import ViewPlan from '../screens/ViewPlanScreen';
 import EditPlan from '../screens/EditPlanScreen';
+
 // calendar
 import CalendarScreen from '../screens/CalendarScreen';
+
 // register
 import RegisterScreen from '../screens/register';
 import ViewUserScreen from '../screens/ViewUser';
+import EditScreen from '../screens/edit';
+
 //sessions
 import Sessions from '../screens/Sessions';
-//coaching
 import CoachingScreen from '../screens/CoachingScreen';
-// user notes
 import Notes from '../screens/Notes';
+///---///
 
 // setup Navigations
 const Stack = createStackNavigator();
@@ -37,6 +39,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigtator = props => {
     return (
         <Drawer.Navigator>
+                
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Lession Plans" component={ListPlan} />
             <Drawer.Screen name="Calendar" component={CalendarScreen} />
@@ -49,102 +52,52 @@ const DrawerNavigtator = props => {
     );
 }
 
+const MainStack = props => {
+    return (
+        <Stack.Navigator initialRouteName="Home"
+            screenOptions={{
+                title: "Yin Energy Balance",
+                headerStyle: {
+                    backgroundColor: "rgb(108, 184, 58)",
+                },
+                headerTintColor: "#fff",
+                headerTitleAlign: "center",
+                headerLeft: () => {}
+                }} 
+        >
+
+            {/* stacks to drawer */}
+            <Stack.Screen name="Home" component={DrawerNavigtator}/>
+            <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
+            <Stack.Screen name="Calendar" component={DrawerNavigtator} />
+            <Stack.Screen name="Register" component={DrawerNavigtator} />
+            <Stack.Screen name= "View users" component={DrawerNavigtator} />
+            <Stack.Screen name= "Sessions" component={DrawerNavigtator} />
+
+            {/* non drawer screens */}
+            <Stack.Screen name="Add Plan" component={AddPlan} />
+            <Stack.Screen name="View Plan" component={ViewPlan} />
+            <Stack.Screen name="Edit Plan" component={EditPlan} />
+            <Stack.Screen name="Go to Notes" component={Notes} />
+            <Stack.Screen name= "Coachings" component={CoachingScreen} />
+            <Stack.Screen name= "Notes" component={Notes} />
+            <Stack.Screen name= "EditUser" component={EditScreen} />
+    </Stack.Navigator>
+    )
+    
+} // END
+
 
 // Main function
-const Routes = props => {
+const Routes = (props, {navigation}) => {
         // initial load when app starts
         const { loadAllPlans } = React.useContext(PlanContext);
         loadAllPlans();
 
 
-
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen 
-                    name="Home"
-                    component={DrawerNavigtator}
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-
-                {/* stacks to drawer */}
-                <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
-                <Stack.Screen name="Calendar" component={DrawerNavigtator} />
-                <Stack.Screen name="Register" component={DrawerNavigtator} />
-                <Stack.Screen name= "View users" component={DrawerNavigtator} />
-                <Stack.Screen name= "Sessions" component={DrawerNavigtator} />
-
-
-                {/* custom stacks */}
-                <Stack.Screen name="Add Plan" component={AddPlan}
-                    options={{
-                    title: "Yin Energy Balance",
-                    headerStyle: {
-                        backgroundColor: "rgb(108, 184, 58)",
-                    },
-                    headerTintColor: "#fff",
-                    headerTitleAlign: "center"
-                    }} 
-                />
-                <Stack.Screen name="View Plan" component={ViewPlan}
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-                <Stack.Screen name="Edit Plan" component={EditPlan}
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-                <Stack.Screen name="Go to Notes" component={Notes}
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-
-                <Stack.Screen name= "Coachings" component={CoachingScreen} 
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-                <Stack.Screen name= "Notes" component={Notes} 
-                    options={{
-                        title: "Yin Energy Balance",
-                        headerStyle: {
-                            backgroundColor: "rgb(108, 184, 58)",
-                        },
-                        headerTintColor: "#fff",
-                        headerTitleAlign: "center"
-                    }} 
-                />
-            </Stack.Navigator>
+            <MainStack />
         </NavigationContainer>
     );
 }
