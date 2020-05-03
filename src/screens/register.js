@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput, Alert } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { DetailsContext } from '../contexts/DetailsContext';
+import { ScrollView } from 'react-native-gesture-handler';
 //import { createStackNavigator } from 'react-navigation-stack';
 
 const Register = props => {
@@ -64,6 +65,7 @@ const Register = props => {
     }
   }
   return (
+<ScrollView>
     <View style={globalStyles.container}>
       <Text style={globalStyles.titleText}> Please Register Here </Text>
 
@@ -90,6 +92,7 @@ const Register = props => {
         <Button style={globalStyles.Butt} title='Register' onPress={RegisterUserHandler} />
       </View>
     </View>
+</ScrollView>
   );
 }
 export default Register;
