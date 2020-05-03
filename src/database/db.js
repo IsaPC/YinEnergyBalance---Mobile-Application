@@ -63,7 +63,7 @@ export const CreateEvents = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
             tx.executeSql(
-                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT NOT NULL, date TEXT NOT NULL);',
+                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT, event_date TEXT NOT NULL);',
                 [],
                 () => {
                 resolve();
@@ -193,14 +193,54 @@ export const deletePlan = (id) => {
 
 
 //----  events - Isaac  ---//
-export const insertEvent = (title, date) => {
+// export const insertEvent = (title, date) => {
+//     const promise = new Promise((resolve, reject) => {
+//         db.transaction(tx => {
+//           tx.executeSql(
+//             'INSERT INTO events (title, date) VALUES (?,?);',
+//             [title, date],
+//             (_, result) => {
+//                 console.log('insert succeeded');
+//                 resolve(result);
+//             },
+//             (_, err) => {
+//                 console.log('insert failed');
+//                 console.log(err);
+//                 resolve(reject);
+//             });
+//         });
+//     });
+//     return promise;
+// };// END
+
+export const insertEvent = (title, eventDate) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
           tx.executeSql(
-            'INSERT INTO events (title, date) VALUES (?,?);',
-            [title, date],
+            'INSERT INTO events (title, event_date) VALUES (?,?);',
+            [title, eventDate],
             (_, result) => {
-                console.log('insert succeeded');
+                console.log('insert into events succeeded');
+                resolve(result);
+            },
+            (_, err) => {
+                console.log('insert into events insert failed');
+                console.log(err);
+                resolve(reject);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+export const insertNotes = (desc) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+            'INSERT INTO Notes (description) VALUES ?;',
+            [desc],
+            (_, result) => {
+                console.log('addTask');
                 resolve(result);
             },
             (_, err) => {
@@ -211,28 +251,7 @@ export const insertEvent = (title, date) => {
         });
     });
     return promise;
-};
-    export const insertNotes = (desc) => {
-        const promise = new Promise((resolve, reject) => {
-            db.transaction(tx => {
-              tx.executeSql(
-                'INSERT INTO Notes (description) VALUES ?;',
-                [desc],
-                (_, result) => {
-                    console.log('addTask');
-                    resolve(result);
-                },
-                (_, err) => {
-                    console.log('insert failed');
-                    console.log(err);
-                    resolve(reject);
-                });
-            });
-        });
-        return promise;
-    };
- // END
-
+};// END
 
 //----  details - Aashish  ---//
 export const insertDetails = (name, age, address, phone, email, notes) => {
