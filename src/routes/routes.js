@@ -11,7 +11,7 @@ import {PlanContext} from '../contexts/PlanContext';
 
 ///--- Import Screens
 import Home from '../screens/Home';
-import Header from '../shared/header';
+
 // plans
 import ListPlan from '../screens/ListPlansScreen';
 import AddPlan from '../screens/AddPlanScreen';
