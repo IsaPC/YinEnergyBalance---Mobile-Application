@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 //import contexts
 import PlandContextProvider from './src/contexts/PlanContext';
-import CalandContextProvider from './src/contexts/CalendarContext';
+import { CalendarProvider } from './src/contexts/CalendarContext';
 import DetailsContextProvider from './src/contexts/DetailsContext';
 //import screens
 
@@ -36,12 +36,12 @@ function App() {
         return (
         /* nest contexts */
         <DetailsContextProvider>
-            <CalandContextProvider>
                 <PlandContextProvider>
-                    {/* go to routes */}
-                    <Routes />
+                    <CalendarProvider>
+                        {/* go to routes */}
+                        <Routes />
+                    </CalendarProvider>
                 </PlandContextProvider>
-            </CalandContextProvider>
         </DetailsContextProvider>
         );
     else {

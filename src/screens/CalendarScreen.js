@@ -17,7 +17,7 @@ import moment from 'moment';
 
 const CalendarScreen = props => {
     
-    const { addEvent, events } = useContext(CalendarContext);
+    const { addEvent } = useContext(CalendarContext);
 
     /// ---creating date--- ///
     const [date, setDate] = useState(new Date());
@@ -125,17 +125,6 @@ const CalendarScreen = props => {
             textColor={color || undefined}
         />
         )}
-
-        <FlatList
-            data={events}
-            keyExtractor={item => item.id}
-            renderItem={itemData => (
-                <EventItem 
-                title={itemData.item.title}
-                date={itemData.item.date}
-                />
-            )}
-        />
     </View>
 
  );
