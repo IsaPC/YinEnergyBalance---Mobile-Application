@@ -20,7 +20,6 @@ import EditPlan from '../screens/EditPlanScreen';
 
 // calendar
 import CalendarScreen from '../screens/CalendarScreen';
-import DateListScreen from '../screens/DateListScreen';
 
 // register
 import RegisterScreen from '../screens/register';
@@ -43,7 +42,7 @@ const DrawerNavigtator = props => {
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Lession Plans" component={ListPlan} />
-            <Drawer.Screen name="Calendar" component={DateListScreen} />
+            <Drawer.Screen name="Calendar" component={CalendarScreen} />
             <Drawer.Screen name="Register" component={RegisterScreen} />
             <Drawer.Screen name="View customers" component={ViewUserScreen} />
             <Drawer.Screen name="Sessions" component={Sessions} />
@@ -84,7 +83,7 @@ const MainStack = props => {
             <Stack.Screen name= "Coachings" component={CoachingScreen} />
             <Stack.Screen name= "Notes" component={Notes} />
             <Stack.Screen name= "EditUser" component={EditScreen} />
-            <Stack.Screen name="DateList" component={CalendarScreen} />
+            {/* <Stack.Screen name="DateList" component={CalendarScreen} /> */}
     </Stack.Navigator>
     )
     

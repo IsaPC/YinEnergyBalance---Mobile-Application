@@ -9,9 +9,8 @@ const eventItem = props => {
                 onPress={props.onSelectPlan}
             >
                 <View style={{flexDirection: 'row'}}>
-                    <Text>test</Text>
                     <Text style={styles.text}> {props.title} </Text>
-                    <Text style={styles.text}> {props.date} </Text>
+                    <Text style={styles.text}> {props.newDate} </Text>
                 </View>
             </TouchableOpacity>
         </View>

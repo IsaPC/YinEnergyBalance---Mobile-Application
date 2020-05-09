@@ -125,7 +125,12 @@ const CalendarScreen = props => {
                 data={data}
                 keyExtractor={(event) => event.id}
                 renderItem={({item})=> {
-                return <Text>{item.title}</Text>
+                return (
+                    <View style={styles.items}>
+                        <Text>{item.title}</Text>
+                        <Text>{item.newDate}</Text>
+                    </View>
+                )
                 }}
             />    
         </View>
@@ -137,7 +142,8 @@ const CalendarScreen = props => {
 const styles =StyleSheet.create({
 screen: {
     flex: 1,
-    padding: 30,
+    paddingTop: 15,
+    padding: 2,
     alignSelf: 'center',
 },
 datesContainer: {
@@ -162,11 +168,16 @@ containShowDate: {
     borderRadius: 4,
     flexDirection: 'row',
     padding: 15,
+    margin: 8,
 },
 saveButton: {
     padding: 10,
     margin: 3,
 },
+items: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+}
 });
 
 export default CalendarScreen;
