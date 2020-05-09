@@ -1,23 +1,17 @@
 /* Screen created by Isaac */
-
 import React, { useState, useContext } from 'react';
 import {StyleSheet, View, Text, TextInput, Button, FlatList } from 'react-native';
 
-// import custom components
-import EventItem from './Components/eventItem';
-
-import DateTimePicker from '@react-native-community/datetimepicker';
-
-
 // moment allows the formatting of date
 import moment from 'moment';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 // import context
-    import {CalendarContext} from '../contexts/CalendarContext';
+import EventsContext from '../contexts/CalendarContext';
 
 const CalendarScreen = props => {
     
-    const { addEvent } = useContext(CalendarContext);
+    const { data, addEvent } = useContext(EventsContext);
 
     /// ---creating date--- ///
     const [date, setDate] = useState(new Date());
@@ -125,6 +119,16 @@ const CalendarScreen = props => {
             textColor={color || undefined}
         />
         )}
+
+        <View>
+            <FlatList
+                data={data}
+                keyExtractor={(event) => event.id}
+                renderItem={({item})=> {
+                return <Text>{item.title}</Text>
+                }}
+            />    
+        </View>
     </View>
 
  );
