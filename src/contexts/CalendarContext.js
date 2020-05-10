@@ -27,8 +27,8 @@ export const CalendarProvider = props => {
             // add event to database
 
             // add event to state hook events
-            setEvents([...events, {id: dbResult.insertId.toString(), title, newDate }]);
-            console.log(events);  
+            setEvents([...events, {id: dbResult.insertId.toString(), title, newDate}]);
+            console.log(dbResult);  
         } catch (error) {
             //console.log('\nError, failed to load into stateHook, setEvents:')
             
@@ -49,6 +49,7 @@ export const CalendarProvider = props => {
             let dbResult = await selectAllEvents();
             let tempArray = dbResult.rows._array.map(ev => new Event(ev.id.toString(), ev.title, ev.newDate));
             setEvents(tempArray);
+            console.log(events);
             setBool(false); // lock
         }
     } // END

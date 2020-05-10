@@ -63,7 +63,7 @@ export const CreateEvents = () => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
             tx.executeSql(
-                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT, event_date TEXT NOT NULL);',
+                'CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY NOT NULL, title TEXT, newDate TEXT NOT NULL);',
                 [],
                 () => {
                 resolve();
@@ -193,12 +193,12 @@ export const deletePlan = (id) => {
 
 
 //----  events - Isaac  ---//
-export const insertEvent = (title, eventDate) => {
+export const insertEvent = (title, newDate) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
           tx.executeSql(
-            'INSERT INTO events (title, event_date) VALUES (?,?);',
-            [title, eventDate],
+            'INSERT INTO events (title, newDate) VALUES (?,?);',
+            [title, newDate],
             (_, result) => {
                 console.log('insert into events succeeded');
                 resolve(result);
