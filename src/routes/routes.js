@@ -8,6 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 //context
 import {PlanContext} from '../contexts/PlanContext';
+import EventsContext from '../contexts/CalendarContext';
 
 ///--- Import Screens
 import Home from '../screens/Home';
@@ -94,7 +95,9 @@ const MainStack = props => {
 const Routes = (props, {navigation}) => {
         // initial load when app starts
         const { loadAllPlans } = React.useContext(PlanContext);
+        const { loadAllEvents } = React.useContext(EventsContext);
         loadAllPlans();
+        loadAllEvents();
 
 
     return (

@@ -1,15 +1,28 @@
 "filename", "language", "JavaScript", "comment", "blank", "total"
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\helpers\db.js", "JavaScript", 69, 1, 4, 74
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\models\plan.js", "JavaScript", 9, 0, 1, 10
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\routes\routes.js", "JavaScript", 33, 5, 11, 49
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\Home.js", "JavaScript", 17, 0, 3, 20
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\AddPlanScreen.js", "JavaScript", 72, 18, 21, 111
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\addPlan\components\ImageSelector.js", "JavaScript", 78, 8, 16, 102
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\editPlan\EditPlanScreen.js", "JavaScript", 73, 21, 22, 116
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\LessionPlanScreen.js", "JavaScript", 64, 3, 16, 83
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\AddPlan.js", "JavaScript", 21, 0, 5, 26
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\lessionPlan\components\planItem.js", "JavaScript", 38, 0, 4, 42
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\screens\plans\viewPlan\ViewPlanScreen.js", "JavaScript", 37, 2, 8, 47
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\actions\plans-actions.js", "JavaScript", 69, 21, 18, 108
-"c:\MyFiles\Workspaces\React_Native_Projects\YinEnergy\src\store\reducers\plans-reducer.js", "JavaScript", 24, 0, 4, 28
-"Total", "-", 604, 79, 133, 816
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\contexts\CalendarContext.js", "JavaScript", 28, 6, 14, 48
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\contexts\DetailsContext.js", "JavaScript", 44, 2, 13, 59
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\contexts\PlanContext.js", "JavaScript", 78, 26, 31, 135
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\database\db.js", "JavaScript", 270, 31, 31, 332
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\models\details.js", "JavaScript", 12, 0, 13, 25
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\models\plan.js", "JavaScript", 9, 0, 1, 10
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\routes\routes.js", "JavaScript", 75, 12, 20, 107
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\AddPlanScreen.js", "JavaScript", 114, 18, 25, 157
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\CalendarScreen.js", "JavaScript", 153, 8, 35, 196
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\CoachingScreen.js", "JavaScript", 71, 1, 19, 91
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\AddPlan.js", "JavaScript", 21, 1, 6, 28
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\ImageSelector.js", "JavaScript", 101, 10, 22, 133
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\editImagePicker.js", "JavaScript", 104, 11, 19, 134
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\eventItem.js", "JavaScript", 19, 1, 4, 24
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\planItem.js", "JavaScript", 47, 4, 4, 55
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Components\users.js", "JavaScript", 48, 0, 3, 51
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\EditPlanScreen.js", "JavaScript", 93, 19, 28, 140
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Home.js", "JavaScript", 39, 4, 5, 48
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\ListPlansScreen.js", "JavaScript", 63, 10, 13, 86
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Notes.js", "JavaScript", 138, 1, 16, 155
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\Sessions.js", "JavaScript", 63, 0, 11, 74
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\ViewPlanScreen.js", "JavaScript", 51, 7, 8, 66
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\ViewUser.js", "JavaScript", 62, 3, 6, 71
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\edit.js", "JavaScript", 68, 7, 16, 91
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\screens\register.js", "JavaScript", 71, 9, 18, 98
+"c:\MyFiles\Workspaces\React_Native_Projects\MERGE 5\YinEnergyBalance-Mobile-Application\src\styles\global.js", "JavaScript", 35, 0, 1, 36
+"Total", "-", 1877, 191, 382, 2450

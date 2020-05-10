@@ -1,15 +1,15 @@
 
 import React, { useState } from 'react';
 import moment from 'moment'; // moment allows the formatting of date
-import { insertEvent } from '../database/db';
+import { insertEvent, deleteEvent, selectAllEvents } from '../database/db';
 
 const CalendarContext = React.createContext(); 
-
+import Event from '../models/event';
 
 
 export const CalendarProvider = props => {
     const [events, setEvents] = useState([]);
-    // const [events, setEvents] = useState([{title: 'test 1'}, {title: 'test 2'}]);
+
     const addEvent = async (title, date) => {
         try {
             // TODO if no title exists, generate an automatic title
@@ -37,9 +37,26 @@ export const CalendarProvider = props => {
         }
     }; // END
 
+    const removeEvent = async (id) => {
+        await deleteEvent(id);
+        setEvents(events.filter(item => item.id !== id));
+    } // END
+
+
+    const [bool, setBool] = useState(true);
+    const loadAllEvents = async () => {
+        if (bool) {
+            let dbResult = await selectAllEvents();
+            let tempArray = dbResult.rows._array.map(ev => new Event(ev.id.toString(), ev.title, ev.newDate));
+            setEvents(tempArray);
+            setBool(false); // lock
+        }
+    } // END
+
+
 
     return (
-        <CalendarContext.Provider value={{data: events, addEvent}}>
+        <CalendarContext.Provider value={{data: events, addEvent, removeEvent, loadAllEvents}}>
             {props.children}
         </CalendarContext.Provider>
     );

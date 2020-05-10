@@ -1,6 +1,6 @@
 /* Screen created by Isaac */
 import React, { useState, useContext } from 'react';
-import {StyleSheet, View, Text, TextInput, Button, FlatList } from 'react-native';
+import {StyleSheet, View, Text, TextInput, Button, FlatList, TouchableOpacity, Image } from 'react-native';
 
 // moment allows the formatting of date
 import moment from 'moment';
@@ -9,9 +9,12 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 // import context
 import EventsContext from '../contexts/CalendarContext';
 
+//import component
+//import EventItem from './Components/eventItem';
+
 const CalendarScreen = props => {
     
-    const { data, addEvent } = useContext(EventsContext);
+    const { data, addEvent, removeEvent } = useContext(EventsContext);
 
     /// ---creating date--- ///
     const [date, setDate] = useState(new Date());
@@ -129,6 +132,16 @@ const CalendarScreen = props => {
                     <View style={styles.items}>
                         <Text>{item.title}</Text>
                         <Text>{item.newDate}</Text>
+                        <TouchableOpacity 
+                            onPress={()=> {
+                                    console.log(`delete ${item.id}`);
+                                    removeEvent(item.id);
+                        }}>
+                            <Image 
+                            source={require('../../assets/bin.png')} 
+                            style={{width: 35, height: 42}}
+                            />
+                        </TouchableOpacity>
                     </View>
                 )
                 }}
@@ -143,12 +156,12 @@ const styles =StyleSheet.create({
 screen: {
     flex: 1,
     paddingTop: 15,
-    padding: 2,
-    alignSelf: 'center',
+
 },
 datesContainer: {
     borderColor: 'black',
-    borderWidth: 1.
+    borderWidth: 1,
+    margin: 10
 },
 setTimes: {
     flexDirection: "row",
@@ -177,6 +190,10 @@ saveButton: {
 items: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderColor: 'grey'
 }
 });
 

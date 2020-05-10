@@ -193,26 +193,6 @@ export const deletePlan = (id) => {
 
 
 //----  events - Isaac  ---//
-// export const insertEvent = (title, date) => {
-//     const promise = new Promise((resolve, reject) => {
-//         db.transaction(tx => {
-//           tx.executeSql(
-//             'INSERT INTO events (title, date) VALUES (?,?);',
-//             [title, date],
-//             (_, result) => {
-//                 console.log('insert succeeded');
-//                 resolve(result);
-//             },
-//             (_, err) => {
-//                 console.log('insert failed');
-//                 console.log(err);
-//                 resolve(reject);
-//             });
-//         });
-//     });
-//     return promise;
-// };// END
-
 export const insertEvent = (title, eventDate) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
@@ -233,6 +213,40 @@ export const insertEvent = (title, eventDate) => {
     return promise;
 }; // END
 
+export const deleteEvent = (id) => {
+    const promise = new Promise((resolve, reject) => { 
+        db.transaction(tx => {
+            tx.executeSql('DELETE FROM events WHERE id = ?;',
+            [id],
+            (_, result) => {
+             resolve(result);
+            },
+            (_, err) => {
+                reject(err);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+export const selectAllEvents = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+            'SELECT * FROM events',
+            [],
+            (_, result) => {
+                resolve(result);
+            },
+            (_, err) => {
+                reject(err);
+            });
+        });
+    });
+    return promise;
+}; // END
+
+//---- Notes - Minh  ---//
 export const insertNotes = (desc) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
