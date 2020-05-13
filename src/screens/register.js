@@ -4,7 +4,7 @@ import { globalStyles } from '../styles/global';
 import { DetailsContext } from '../contexts/DetailsContext';
 //import { createStackNavigator } from 'react-navigation-stack';
 import { ScrollView } from 'react-native-gesture-handler';
-import Home from '../screens/Home';
+
 const Register = props => {
 
     const { addDetails } = useContext(DetailsContext);
@@ -74,7 +74,7 @@ const Register = props => {
             setPhoneValue('');
             setEmailValue('');
             setNoteValue('');
-            props.navigation.navigate('Home',{Home})
+            props.navigation.navigate('View customers')
 
         }
     }

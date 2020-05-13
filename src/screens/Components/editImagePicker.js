@@ -50,9 +50,9 @@ const EditImgPicker = props => {
         }
 
         const image = await ImagePicker.launchImageLibraryAsync({
-            allowsEditing: false,
+            allowsEditing: true,
             aspectRatio: [16, 9],
-            quality: 0.6,
+            quality: 1,
         });
 
         setPickedImage(image.uri);

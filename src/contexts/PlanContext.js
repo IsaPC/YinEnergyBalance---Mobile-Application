@@ -51,25 +51,20 @@ const PlanContextProvider = props => {
             const fileName = imageUri.split('/').pop();
             const newPath = FileSystem.documentDirectory + fileName;
 
+            console.log(`\nold path:\n${imageUri} \nnew location:\n${newPath}\n`)
+
             //store image to local file system
             await FileSystem.moveAsync({
                 from: imageUri,
                 to: newPath
             });
+
             //insert data into database
             const dbResult = await insertPlan(title, newPath, description);
 
-            //log database
-            console.log('what is in the database:');
-            // console.log(dbResult);
-            
-            // insert data into state
-            console.log('\nattempting to add plan in context');
-            setPlans([...plans, {id: dbResult.insertId.toString() , title, imageUri, description}]);
+            setPlans([...plans, {id: dbResult.insertId.toString() , title, imageUri: newPath, description}]);
         } catch (error) {
-            console.log('\nError, failed to load into stateHook, setPlans:')
-            console.log(error);
-            console.log('\n');
+            console.log(`\nError:\n ${error}`)
         }
     }; // END
 
@@ -96,7 +91,7 @@ const PlanContextProvider = props => {
             console.log('\n');
 
             await updatePlan(id, title, imageUri, description);
-            setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: newPath, description: description} : item ));
+            setPlans(plans.map(item => item.id === id ? {...item, title: title, imageUri: imageUri, description: description} : item ));
             console.log('completed editing plan in context');
         } else {
             /**

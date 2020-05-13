@@ -32,9 +32,9 @@ const ImgPicker = props => {
             return;
         }
         const image = await ImagePicker.launchCameraAsync({
-            //allowsEditing: true, // TODO change from ImageEditor.cropImage() to expo ImageManipulator.
+            allowsEditing: true,
             aspectRatio: [16, 9],
-            quality: 0.6,
+            quality: 1,
         });
 
         setPickedImage(image.uri);

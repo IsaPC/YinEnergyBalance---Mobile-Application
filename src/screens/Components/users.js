@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+
 const userItem = props => {
     return (
         <View style={styles.userItems}>
@@ -17,10 +17,15 @@ const userItem = props => {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.edit} onPress={props.onEditPlan}>
-                <FontAwesome5 name='user-edit' size={35} color='#333' style={styles.icons} />
+                <Image 
+                    source={require('../../../assets/240px-Cog_font_awesome.png')} 
+                />
             </TouchableOpacity>
             <TouchableOpacity style={styles.delete} onPress={props.OnDelete}>
-                <MaterialIcons name='delete' size={35} color='#333' style={styles.icons} />
+                <Image 
+                    source={require('../../../assets/bin.png')} 
+                    style={{width: 35, height: 42}}
+                />
             </TouchableOpacity>
         </View>
     );
@@ -40,6 +45,9 @@ const styles = StyleSheet.create({
     itemText: {
         flex: 1,
         padding:10
+    },
+    edit: {
+        paddingRight: 3,
     },
     icons: {
         alignSelf: "flex-end",

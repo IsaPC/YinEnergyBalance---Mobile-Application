@@ -58,14 +58,18 @@ const Edit = props => {
         }
         else {
             Alert.alert("Hey There", "Are you sure to update",[
-                {text:'Yes', onPress: () => editDetails(userId,nameValue, ageValue, addressValue, phoneValue, emailValue, noteValue)},
+                {text:'Yes', onPress: () => {
+                        editDetails(userId,nameValue, ageValue, addressValue, phoneValue, emailValue, noteValue)
+                        props.navigation.navigate('View customers');
+                    }
+                },
                 {text:'No', onPress: () => console.log('alert closed')},
 
             ])
             console.log('\n\nclicked on Edit User Detail');
             console.log('Name :', nameValue, 'Age:', ageValue, 'Address:', addressValue, 'Phone:', phoneValue, 'Email:', emailValue, 'Note:', noteValue);
             //editDetails(userId,nameValue, ageValue, addressValue, phoneValue, emailValue, noteValue);
-            props.navigation.goBack();
+            
         }
     }
     return (
