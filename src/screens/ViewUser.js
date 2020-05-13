@@ -1,21 +1,21 @@
 /* Screen created by Aashish */
 
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Alert } from 'react-native';
 import { DetailsContext } from '../contexts/DetailsContext';
 import User from './Components/users';
 import { ScrollView } from 'react-native-gesture-handler';
 // navigation guide https://reactnavigation.org/docs/params/
 
 const ViewUser = props => {
-   const {details,loadAllDetails,removeUsers} = useContext(DetailsContext);
-   loadAllDetails();    
+    const { details, loadAllDetails, removeUsers } = useContext(DetailsContext);
+    loadAllDetails();
     const addUserHandler = () => {
         console.log('add-user button clicked');
         //props.navigation.navigate();
     }
     return (
-    
+
         <View>
             <View style={styles.buttnPos}>
             </View>
@@ -30,7 +30,7 @@ const ViewUser = props => {
                         phone={itemData.item.phone}
                         email={itemData.item.email}
                         notes={itemData.item.notes}
-                        id = {itemData.item.id}
+                        id={itemData.item.id}
                         onEditPlan={() => {
                             console.log('edit user button');
                             props.navigation.navigate('EditUser', {
@@ -44,13 +44,17 @@ const ViewUser = props => {
                             });
                         }}
                         OnDelete={() => {
-                            removeUsers(itemData.item.id);
+                            Alert.alert("Caution", "are you sure", [
+                                { text: 'Yes', onPress: () => removeUsers(itemData.item.id) },
+                                { text: 'No', onPress: () => console.log('alert closed') }
+                            ]);
+
                         }}
                     />
                 )} />
             <View style={styles.end}></View>
         </View>
-    
+
     );
 }
 
