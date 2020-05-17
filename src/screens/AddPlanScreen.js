@@ -72,53 +72,47 @@ const AddPlanScreen = props => {
     ///
 
     return (
-        <ScrollView>
-            <View style={styles.screen}>
-                <ImagePicker onImageTaken={imageTakenHandler} />
+        <View  style={{flex: 1, backgroundColor: 'white'}}>
 
-                <View style={styles.titleContainer}>
-                    <TextInput
-                        placeholder='Input Title:'
-                        placeholderTextColor="grey"
-                        style={styles.titleinput}
-                        onChangeText={titleChangeHandler} 
-                        value={titleValue}
-                    />
-                </View>
-
-                <View style={styles.descriptionContainer}>
-                    <TextInput  
-                        placeholder='description:' 
-                        placeholderTextColor="grey"
-                        multiline
-                        style={styles.descInput}
-                        onChangeText={descChangeHandler} 
-                        value={descValue}    
-                    />
-                </View>
-
-                <View style={styles.saveButton}>
-                    <Button
-                        onPress={SavePlanHandler}
-                        title="Save"
-                        color="rgb(0, 222, 7)"
-                    />
-                </View>
+            <ImagePicker onImageTaken={imageTakenHandler} />
+                
+            <View style={styles.descriptionContainer}>
+                <TextInput
+                    placeholder='Input Title:'
+                    placeholderTextColor="grey"
+                    style={styles.titleinput}
+                    onChangeText={titleChangeHandler} 
+                    value={titleValue}
+                />
             </View>
-
-        </ScrollView>  
+            <View  style={{flex: 1}}>
+                
+                
+                <ScrollView>
+                    <View style={styles.titleContainer}>
+                        <TextInput  
+                            placeholder='description:' 
+                            placeholderTextColor="grey"
+                            multiline
+                            style={styles.descInput}
+                            onChangeText={descChangeHandler} 
+                            value={descValue}    
+                        />
+                    </View>
+                </ScrollView>
+            </View>
+            <View style={{flex: 0.1,justifyContent: 'flex-end'}}>
+                <Button
+                    onPress={SavePlanHandler}
+                    title="Save"
+                    color="rgb(0, 222, 7)"
+                />
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        flexDirection:  'column',
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-        width: "100%",
-        height: "100%"
-    },
     titleContainer: {
         borderColor: 'black',
         borderWidth: 1,
@@ -144,14 +138,7 @@ const styles = StyleSheet.create({
             fontSize: 24,
             padding: 10
         },
-    saveButton: {
-
-        alignSelf: 'flex-end',
-        padding: 10,
-        position: 'relative',
-        bottom: 0,
-        alignSelf: "center"
-    }
+    
 });
 
 export default AddPlanScreen;

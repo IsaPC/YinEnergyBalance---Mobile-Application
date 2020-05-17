@@ -1,7 +1,7 @@
 /* Screen created by Isaac */
 
 import React, { useState, useContext } from 'react';
-import {StyleSheet, ScrollView, Image, View, Text, TextInput, Button } from 'react-native';
+import { StyleSheet, ScrollView, View, TextInput, Button, Alert } from 'react-native';
 
 import ImgPicker from './Components/editImagePicker';
 
@@ -74,45 +74,54 @@ const EditPlanScreen = props => {
     ///
 
     const deletePlanHandler = () => {
-        console.log('delete plan: ' + titleValue);
-        console.log(imageValueUri, imageUri);
-        removePlan(planId, imageValueUri);
-        props.navigation.goBack();
+        Alert.alert("do you want to delete this?", "", [
+            { 
+                text:"Yes", 
+                onPress: () => {
+                    console.log('delete plan: ' + titleValue);
+                    console.log(imageValueUri, imageUri);
+                    removePlan(planId, imageValueUri);
+                    props.navigation.goBack();
+                }
+            } , {
+                text:"No",
+                onPress: () => console.log('alert closed')
+            }
+        ]);
     }
 
     return (
-        <ScrollView>
-            <View>
+        <View style={{flex: 1}}>  
             <ImgPicker onImageTaken={imageTakenHandler} oldImage={imageUri}/>
+            <View style={styles.containTitle}>
+                <TextInput
+                        style={styles.titleinput}
+                        onChangeText={titleChangeHandler} 
+                        value={titleValue}
+                />
+            </View>
+            
+            <View  style={{flex: 1}}>
+                <TextInput  
+                    multiline
+                    style={styles.descriptioninput}
+                    onChangeText={descChangeHandler} 
+                    value={descValue}    
+                />
+            </View>
+            <View style={{flex: 0.1,justifyContent: 'flex-end'}}>
+                <Button
+                        onPress={SavePlanHandler}
+                        title="Save"
+                        color="rgb(0, 222, 7)"
+                    />
+                    <Button onPress={deletePlanHandler}
+                        title="delete"
+                        color="rgb(168, 9, 217)"
+                    />
             </View>
 
-        <View style={styles.containTitle}>
-            <TextInput
-                    style={styles.titleinput}
-                    onChangeText={titleChangeHandler} 
-                    value={titleValue}
-            />
         </View>
-            
-
-            <TextInput  
-                multiline
-                style={styles.descriptioninput}
-                onChangeText={descChangeHandler} 
-                value={descValue}    
-            />
-
-            <Button
-                onPress={SavePlanHandler}
-                title="Save"
-                color="rgb(0, 222, 7)"
-            />
-
-            <Button onPress={deletePlanHandler}
-                title="delete"
-                color="rgb(168, 9, 217)"
-            />
-        </ScrollView>
     );
 }
 

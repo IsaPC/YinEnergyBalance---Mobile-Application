@@ -60,7 +60,7 @@ const EditImgPicker = props => {
     }
 
     return (
-        <View>
+        <View stle={{flex: 1}}>
             {/* Preview Image */}
             <View style={styles.imageContainer}>
                 {!pickedImage ? (
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         alignSelf: 'center',
         justifyContent: "center",
-        paddingRight: 50,
+
         paddingTop: 5,
         margin: 0,
         flexDirection: 'row',

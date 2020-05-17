@@ -23,6 +23,7 @@ const planItem = props => {
 
 const styles = StyleSheet.create({
     planItem: {
+        flex: 1,
         flexDirection: 'row',
         paddingVertical: 8,
         justifyContent: 'space-between',
