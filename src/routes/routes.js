@@ -31,6 +31,7 @@ import EditScreen from '../screens/edit';
 import Sessions from '../screens/Sessions';
 import CoachingScreen from '../screens/CoachingScreen';
 import Notes from '../screens/Notes';
+import Instruction from '../screens/Instruction';
 //import Header from '../../shared/header';
 ///---///
 
