@@ -84,22 +84,22 @@ const Register = props => {
                 <Text style={globalStyles.titleText}> Please Register Here </Text>
 
                 <View style={globalStyles.register}>
-
+                        <Text style={styles.txt}>Name</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Full Name"
                         underlineColorAndroid={'transparent'} onChangeText={nameChangeHandler} value={nameValue} />
-
+                        <Text style={styles.txt}>Age</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Age"
                         underlineColorAndroid={'transparent'} onChangeText={ageChangeHandler} value={ageValue} />
-
+                        <Text style={styles.txt}>Address</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Address"
                         underlineColorAndroid={'transparent'} onChangeText={addressChangeHandler} value={addressValue} />
-
+                        <Text style={styles.txt}>Phone Number</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Phone"
                         underlineColorAndroid={'transparent'} onChangeText={phoneChangeHandler} value={phoneValue} />
-
+                        <Text style={styles.txt}>Email</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Email"
                         underlineColorAndroid={'transparent'} onChangeText={emailChangeHandler} value={emailValue} />
-
+                        <Text style={styles.txt}>Notes</Text>
                     <TextInput style={globalStyles.textBux} placeholder="Please specify if you would like me to know"
                         underlineColorAndroid={'transparent'} onChangeText={noteChangeHandler} value={noteValue} />
 
@@ -109,4 +109,11 @@ const Register = props => {
         </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    txt: {
+        paddingBottom: 2
+    },
+});
+
 export default Register;
