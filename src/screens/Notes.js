@@ -139,6 +139,7 @@ class Notes extends Component {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between"
+         width: "95%"
       },
       textInput: {
         height: 40,
