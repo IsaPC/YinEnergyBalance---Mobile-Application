@@ -1,7 +1,7 @@
 /* Screen created by Isaac */
 
-import React, { useState, useContext } from 'react';
-import { StyleSheet, ScrollView, View, TextInput, Button, Alert } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { StyleSheet, ScrollView, View, TextInput, Button, Alert, Keyboard } from 'react-native';
 
 import ImgPicker from './Components/editImagePicker';
 
@@ -14,10 +14,29 @@ import { deletePlan } from '../database/db';
 const EditPlanScreen = props => {
     //context
     const {editPlan, removePlan } = useContext(PlanContext);
-    
-
-
     const { planId, planTitle, imageUri, description, otherParam } = props.route.params;
+
+    //hide imagePicker if keyboard is open
+    const [keyBOpen, SetkeyBOpen] = useState(false);
+
+    useEffect(() => {
+        Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+        Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+    
+        // cleanup function
+        return () => {
+          Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+          Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+        };
+      }, []);
+
+      const _keyboardDidShow = () => {
+        SetkeyBOpen(true);
+    };
+
+      const _keyboardDidHide = () => {
+        SetkeyBOpen(false);
+    };
 
 
 /// --- TITLE ---
@@ -92,7 +111,16 @@ const EditPlanScreen = props => {
 
     return (
         <View style={{flex: 1}}>  
-            <ImgPicker onImageTaken={imageTakenHandler} oldImage={imageUri}/>
+            
+            {!keyBOpen ? (
+                   <ImgPicker onImageTaken={imageTakenHandler} oldImage={imageUri}/>
+                ) : (
+                   <View />
+                )}
+            
+            
+            
+            
             <View style={styles.containTitle}>
                 <TextInput
                         style={styles.titleinput}

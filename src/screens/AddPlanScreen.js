@@ -1,7 +1,7 @@
 /* Screen created by Isaac */
 
-import React, { useState, useContext } from 'react';
-import {StyleSheet, View, TextInput, Button, Alert, ScrollView } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import {StyleSheet, View, TextInput, Button, Alert, ScrollView, Keyboard  } from 'react-native';
 
 //import context
 import { PlanContext } from '../contexts/PlanContext';
@@ -12,6 +12,30 @@ import ImagePicker from './Components/ImageSelector';
 const AddPlanScreen = props => {
     const { addPlan } = useContext(PlanContext) ;
  
+    //hide imagePicker if keyboard is open
+    const [keyBOpen, SetkeyBOpen] = useState(false);
+
+    useEffect(() => {
+        Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+        Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+    
+        // cleanup function
+        return () => {
+          Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+          Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+        };
+      }, []);
+    
+    
+
+    const _keyboardDidShow = () => {
+        SetkeyBOpen(true);
+    };
+
+      const _keyboardDidHide = () => {
+        SetkeyBOpen(false);
+    };
+
 
     /// --- TITLE ---
     // control the title input
@@ -74,7 +98,11 @@ const AddPlanScreen = props => {
     return (
         <View  style={{flex: 1, backgroundColor: 'white'}}>
 
-            <ImagePicker onImageTaken={imageTakenHandler} />
+                {!keyBOpen ? (
+                   <ImagePicker onImageTaken={imageTakenHandler} />
+                ) : (
+                   <View />
+                )}
                 
             <View style={styles.descriptionContainer}>
                 <TextInput

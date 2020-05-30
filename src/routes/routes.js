@@ -48,6 +48,7 @@ const DrawerNavigtator = props => {
             <Drawer.Screen name="Register" component={RegisterScreen} />
             <Drawer.Screen name="View customers" component={ViewUserScreen} />
             <Drawer.Screen name="Sessions" component={Sessions} />
+            <Drawer.Screen name="Guide Book" component={Instruction} />
             {/* <Drawer.Screen name="Coachings" component={CoachingScreen} />
             <Drawer.Screen name="Add Notes" component={Notes} /> */}
         </Drawer.Navigator>
@@ -76,6 +77,7 @@ const MainStack = props => {
             <Stack.Screen name="Register" component={DrawerNavigtator} />
             <Stack.Screen name= "View users" component={DrawerNavigtator} />
             <Stack.Screen name= "Sessions" component={DrawerNavigtator} />
+            <Stack.Screen name="Guide Book" component={DrawerNavigtator} />
 
             {/* non drawer screens */}
             <Stack.Screen name="Add Plan" component={AddPlan} />
