@@ -1,3 +1,4 @@
+/* Screen created by Minh */
 import React, { Component } from 'react';
 import {
     View, Text, StyleSheet, Button, Image, ScrollView
@@ -11,9 +12,10 @@ class Sessions extends Component {
             <View style={styles.container}> 
                 <Text style = {styles.title}>
                      YIN YOGA or 
-​           UNBRIDLED.EMBODIED.LIVING COACHING </Text>
+​           UNBRIDLED.EMBODIED.LIVING SESSIONS </Text>
                 <Image
-                  source={require('../image/yin1.png')}> 
+                  source={require('../image/yin1.png')}
+                  style={{alignSelf: 'center', marginTop: 0, marginBottom: 10,}}>
                 </Image>
                 
                            
@@ -52,7 +54,7 @@ const styles= {
     },
     title: {
         color: 'black', 
-        fontSize: 18, 
+        fontSize: 16, 
         justifyContent: 'center', 
         fontWeight: 'bold',
         backgroundColor: '#e6ffe6',

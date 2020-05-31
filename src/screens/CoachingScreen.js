@@ -10,8 +10,10 @@ class CoachingScreen extends Component {
     render () {
         return (
         <ScrollView>
-            <View>    
-                  
+            <View> 
+                <Text style = {styles.title}>
+                     YIN YOGA or 
+​           UNBRIDLED.EMBODIED.LIVING COACHING </Text>
                 <Image
                     source={require('../image/yin2.jpg')}
                     style={{alignSelf: 'center', marginTop: 0, marginBottom: 10,}}
@@ -81,6 +83,14 @@ const styles = {
       bottom:0,
       marginBottom: 20
   },
+  title: {
+    color: 'black', 
+    fontSize: 16, 
+    justifyContent: 'center', 
+    fontWeight: 'bold',
+    backgroundColor: '#e6ffe6',
+    padding: 10
+},
   
 }
 
