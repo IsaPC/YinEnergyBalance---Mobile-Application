@@ -84,7 +84,7 @@ const Register = props => {
                 <Text style={globalStyles.titleText}> Please Register Here </Text>
 
                 <View style={globalStyles.register}>
-                        <Text style={styles.txt}>Name</Text>
+                        <Text style={styles.txt}>Full Name</Text>
                     <TextInput style={globalStyles.textIn} placeholder="Full Name"
                         underlineColorAndroid={'transparent'} onChangeText={nameChangeHandler} value={nameValue} />
                         <Text style={styles.txt}>Age</Text>

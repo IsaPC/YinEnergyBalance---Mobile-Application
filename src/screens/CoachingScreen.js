@@ -11,12 +11,10 @@ class CoachingScreen extends Component {
         return (
         <ScrollView>
             <View> 
-                <Text style = {styles.title}>
-                     YIN YOGA or 
-​           UNBRIDLED.EMBODIED.LIVING COACHING </Text>
+                
                 <Image
                     source={require('../image/yin2.jpg')}
-                    style={{alignSelf: 'center', marginTop: 0, marginBottom: 10,}}
+                    style={{alignSelf: 'center', marginTop: 10, marginBottom: 10,}}
                 > 
                 </Image>
 

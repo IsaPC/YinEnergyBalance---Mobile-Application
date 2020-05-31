@@ -138,7 +138,7 @@ class Notes extends Component {
       listItemCont: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
          width: "95%"
       },
       textInput: {
