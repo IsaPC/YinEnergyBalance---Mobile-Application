@@ -43,7 +43,7 @@ const DrawerNavigtator = props => {
     return (
         <Drawer.Navigator>
             <Drawer.Screen name="Home" component={Home} />
-            <Drawer.Screen name="Lession Plans" component={ListPlan} />
+            <Drawer.Screen name="Lesson Plans" component={ListPlan} />
             <Drawer.Screen name="Calendar" component={CalendarScreen} />
             <Drawer.Screen name="Register" component={RegisterScreen} />
             <Drawer.Screen name="View customers" component={ViewUserScreen} />
@@ -72,7 +72,7 @@ const MainStack = props => {
 
             {/* stacks to drawer */}
             <Stack.Screen name="Home" component={DrawerNavigtator}/>
-            <Stack.Screen name="Lession Plans" component={DrawerNavigtator} />
+            <Stack.Screen name="Lesson Plans" component={DrawerNavigtator} />
             <Stack.Screen name="Calendar" component={DrawerNavigtator} />
             <Stack.Screen name="Register" component={DrawerNavigtator} />
             <Stack.Screen name= "View users" component={DrawerNavigtator} />
